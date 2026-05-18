@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contato - Casaleti</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Josefin Sans', sans-serif;
+}
+
+.fundo-madeira{
+background-image:url("wood-bg.png");
+background-size:cover;
+background-position:center;
+}
+
+.bolha{
+position:absolute;
+border-radius:9999px;
+filter:blur(80px);
+opacity:.15;
+}
+
+</style>
+
+</head>
+
+<body class="bg-gray-100">
+
+<!-- NAV -->
+
+<header class="relative z-10 flex justify-center pt-6">
+
+<nav class="bg-white rounded-full px-6 md:px-10 py-4 w-[90%] flex items-center justify-between shadow-lg">
+
+<h1 class="text-lg tracking-widest font-semibold">
+CASALETI
+</h1>
+
+<ul class="hidden md:flex gap-10 text-md text-gray-800">
+
+<li>
+<a href="index.html">início</a>
+</li>
+
+<li>
+<a href="index.html#categorias">categorias</a>
+</li>
+
+<li>
+<a href="index.html#projetos">projetos</a>
+</li>
+
+<li>
+<a href="contato.html">contato</a>
+</li>
+
+</ul>
+
+<div class="flex items-center gap-4">
+
+<button onclick="toggleMenu()"
+class="md:hidden text-2xl">
+
+☰
+
+</button>
+
+<!-- CARRINHO -->
+
+<div class="relative cursor-pointer"
+onclick="abrirCarrinho()">
+
+<img src="cart.png" class="w-6">
+
+<span id="contadorCarrinho"
+class="absolute -top-2 -right-2 bg-black text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+
+0
+
+</span>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- MENU MOBILE -->
+
+<div id="menuMobile"
+class="hidden absolute top-24 w-[90%] bg-white rounded-2xl shadow-lg p-6 md:hidden">
+
+<ul class="flex flex-col gap-6">
+
+<li><a href="index.html">início</a></li>
+<li><a href="index.html#categorias">categorias</a></li>
+<li><a href="index.html#projetos">projetos</a></li>
+<li><a href="contato.html">contato</a></li>
+
+</ul>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="relative fundo-madeira py-28 overflow-hidden">
+
+<div class="absolute inset-0 bg-white/85"></div>
+
+<div class="bolha bg-black w-[300px] h-[300px] top-0 left-0"></div>
+<div class="bolha bg-black w-[300px] h-[300px] bottom-0 right-0"></div>
+
+<div class="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+
+<!-- TEXTO -->
+
+<div>
+
+<p class="text-gray-400 tracking-widest mb-3">
+CASALETI
+</p>
+
+<h2 class="text-4xl md:text-5xl font-semibold mb-6 leading-tight">
+
+Vamos criar seu <br>
+projeto?
+
+</h2>
+
+<p class="text-gray-600 mb-8 text-lg">
+
+Conte pra gente sua ideia e
+vamos transformar em realidade.
+
+</p>
+
+<button onclick="abrirWhats()"
+class="bg-black text-white px-8 py-5 rounded-2xl flex items-center gap-4 hover:scale-105 transition shadow-lg">
+
+Chamar no WhatsApp
+
+<img src="whatsapp.png"
+class="w-10 h-10">
+
+</button>
+
+<p class="mt-6 text-gray-500">
+
+Monte Alto e região • Atendimento personalizado
+
+</p>
+
+</div>
+
+<!-- FORM -->
+
+<div class="bg-white p-8 rounded-3xl shadow-xl">
+
+<h3 class="text-xl font-semibold mb-6">
+
+Envie sua solicitação
+
+</h3>
+
+<form class="space-y-4">
+
+<input
+id="nome"
+type="text"
+placeholder="Seu nome"
+class="w-full border p-4 rounded-xl">
+
+<input
+id="telefone"
+type="tel"
+placeholder="Telefone"
+class="w-full border p-4 rounded-xl">
+
+<select
+id="tipo"
+class="w-full border p-4 rounded-xl">
+
+<option>Tipo de projeto</option>
+<option>Mesa personalizada</option>
+<option>Porta sob medida</option>
+<option>Bolacha decorativa</option>
+
+</select>
+
+<textarea
+id="descricao"
+placeholder="Descreva seu projeto"
+rows="4"
+class="w-full border p-4 rounded-xl"></textarea>
+
+<button
+type="button"
+onclick="enviarWhatsForm()"
+class="bg-black text-white px-6 py-3 rounded-xl w-full hover:scale-105 transition">
+
+Enviar solicitação
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="relative bg-black text-white pt-20 pb-10 overflow-hidden">
+
+<div class="relative max-w-6xl mx-auto px-6 text-center text-gray-400">
+
+© 2026 Casaleti — Todos os direitos reservados
+
+</div>
+
+</footer>
+
+<!-- OVERLAY -->
+
+<div id="overlayCarrinho"
+class="fixed inset-0 bg-black/50 hidden z-40"
+onclick="fecharCarrinho()"></div>
+
+<!-- CARRINHO -->
+
+<div id="carrinhoDrawer"
+class="fixed top-0 right-0 w-full sm:w-[350px] h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 flex flex-col">
+
+<div class="p-6 border-b flex justify-between">
+
+<h2 class="text-lg font-semibold">
+Seu carrinho
+</h2>
+
+<button onclick="fecharCarrinho()">✕</button>
+
+</div>
+
+<div id="listaCarrinho"
+class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+
+<div class="p-6 border-t">
+
+<p class="font-semibold mb-3">
+
+Total:
+<span id="totalCarrinho">
+
+R$0
+
+</span>
+
+</p>
+
+<button onclick="finalizarWhats()"
+class="bg-green-600 text-white w-full py-3 rounded-full">
+
+Finalizar pelo WhatsApp
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SCRIPT -->
+
+<script>
+
+/* MENU */
+
+function toggleMenu(){
+
+document
+.getElementById("menuMobile")
+.classList.toggle("hidden")
+
+}
+
+/* WHATS */
+
+function abrirWhats(){
+
+window.open(
+"https://wa.me/5516999999999"
+)
+
+}
+
+function enviarWhatsForm(){
+
+let nome=document.getElementById("nome").value
+let tel=document.getElementById("telefone").value
+let tipo=document.getElementById("tipo").value
+let desc=document.getElementById("descricao").value
+
+let msg=
+`Olá! Meu nome é ${nome}%0A
+Telefone: ${tel}%0A
+Projeto: ${tipo}%0A
+Descrição: ${desc}`
+
+window.open(
+`https://wa.me/5516999999999?text=${msg}`
+)
+
+}
+
+/* CARRINHO */
+
+function getCarrinho(){
+return JSON.parse(localStorage.getItem("carrinho"))||[]
+}
+
+function salvarCarrinho(c){
+localStorage.setItem("carrinho",JSON.stringify(c))
+atualizarContador()
+mostrarCarrinho()
+}
+
+function abrirCarrinho(){
+
+document
+.getElementById("overlayCarrinho")
+.classList.remove("hidden")
+
+document
+.getElementById("carrinhoDrawer")
+.style.transform="translateX(0)"
+
+mostrarCarrinho()
+
+}
+
+function fecharCarrinho(){
+
+document
+.getElementById("overlayCarrinho")
+.classList.add("hidden")
+
+document
+.getElementById("carrinhoDrawer")
+.style.transform="translateX(100%)"
+
+}
+
+function mostrarCarrinho(){
+
+let lista=document.getElementById("listaCarrinho")
+
+let carrinho=getCarrinho()
+
+lista.innerHTML=""
+
+let total=0
+
+carrinho.forEach((prod,i)=>{
+
+let preco = Number(prod.preco)
+
+total += preco
+
+lista.innerHTML+=`
+
+<div class="flex gap-3 items-center border p-3 rounded-xl">
+
+<img src="${prod.img}"
+class="w-14 h-14 rounded-lg object-cover">
+
+<div class="flex-1">
+
+<p class="text-sm">
+${prod.nome}
+</p>
+
+<p class="text-sm font-semibold">
+R$ ${preco}
+</p>
+
+</div>
+
+<button onclick="removerItem(${i})"
+class="text-red-500">
+
+✕
+
+</button>
+
+</div>
+
+`
+
+})
+
+document
+.getElementById("totalCarrinho")
+.innerText=`R$ ${total}`
+
+}
+
+function removerItem(i){
+
+let carrinho=getCarrinho()
+
+carrinho.splice(i,1)
+
+salvarCarrinho(carrinho)
+
+}
+
+function atualizarContador(){
+
+document
+.getElementById("contadorCarrinho")
+.innerText=getCarrinho().length
+
+}
+
+function finalizarWhats(){
+
+let carrinho=getCarrinho()
+
+let texto="Olá! Quero:%0A"
+
+carrinho.forEach(p=>{
+
+texto+=`- ${p.nome} (R$${p.preco})%0A`
+
+})
+
+window.open(
+`https://wa.me/5516999999999?text=${texto}`
+)
+
+}
+
+atualizarContador()
+
+</script>
+
+</body>
+</html>

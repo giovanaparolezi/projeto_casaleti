@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Casaleti - Peças artesanais</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+body{
+font-family:'Josefin Sans',sans-serif;
+}
+</style>
+
+</head>
+
+<body class="bg-black">
+
+<!-- HERO -->
+
+<section class="relative h-screen w-full">
+
+<div class="absolute inset-0">
+
+<img src="traditional-house-interior-design 1.png"
+class="w-full h-full object-cover">
+
+<div class="absolute inset-0 bg-black/40"></div>
+
+</div>
+
+<!-- NAV -->
+
+<header class="relative z-10 flex justify-center pt-6">
+
+<nav class="bg-white rounded-full px-6 md:px-10 py-4 w-[90%] flex items-center justify-between shadow-lg">
+
+<h1 class="text-lg tracking-widest font-semibold">
+CASALETI
+</h1>
+
+<!-- MENU DESKTOP -->
+
+<ul class="hidden md:flex gap-10 text-md text-gray-800">
+
+<li>
+<a href="index.html" class="hover:text-black">
+início
+</a>
+</li>
+
+<li>
+<a href="#categorias" class="hover:text-black">
+categorias
+</a>
+</li>
+
+
+
+<li>
+<a href="contato.html" class="hover:text-black">
+contato
+</a>
+</li>
+
+</ul>
+
+<!-- LADO DIREITO -->
+
+<div class="flex items-center gap-4">
+
+<!-- BOTÃO MENU MOBILE -->
+
+<button onclick="toggleMenu()"
+class="md:hidden text-2xl">
+
+☰
+
+</button>
+
+<!-- CARRINHO -->
+
+<div class="relative cursor-pointer"
+onclick="abrirCarrinho()">
+
+<img src="cart.png" class="w-6">
+
+<span id="contadorCarrinho"
+class="absolute -top-2 -right-2 bg-black text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+
+0
+
+</span>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- MENU MOBILE -->
+
+<div id="menuMobile"
+class="hidden absolute top-24 w-[90%] bg-white rounded-2xl shadow-lg p-6 md:hidden">
+
+<ul class="flex flex-col gap-6 text-gray-800">
+
+<li>
+<a href="index.html">
+início
+</a>
+</li>
+
+<li>
+<a href="#categorias">
+categorias
+</a>
+</li>
+
+
+<li>
+<a href="#contato">
+contato
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</header>
+
+<!-- TEXTO -->
+
+<div class="relative z-10 flex items-start justify-center h-full text-center px-6 pt-24">
+
+
+<h2 
+data-aos="fade-up"
+class="text-white 
+text-lg sm:text-2xl md:text-4xl lg:text-5xl
+font-light 
+tracking-[0.15em] sm:tracking-[0.25em] md:tracking-[0.30em]
+leading-relaxed
+max-w-4xl">
+
+TRANSFORME SEU <br>
+ESPAÇO COM MÓVEIS <br>
+QUE COMBINEM BELEZA <br>
+E PERSONALIDADE
+
+</h2>
+</div>
+
+</section>
+<!-- BARRA INFERIOR HERO -->
+
+<div class="absolute bottom-0 w-full bg-black/90 text-white py-6">
+
+<div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+
+<div class="flex items-center gap-3 justify-center"
+data-aos="fade-up">
+
+<img src="entrega-rapida 1.png"
+class="w-7 h-7">
+
+<span>
+Entrega gratuita em <br>
+Monte Alto e região
+</span>
+
+</div>
+
+<div class="flex items-center gap-3 justify-center"
+data-aos="fade-up"
+data-aos-delay="100">
+
+<img src="medicao 1.png"
+class="w-7 h-7">
+
+<span>
+Peças sob medida e <br>
+personalizáveis
+</span>
+
+</div>
+
+<div class="flex items-center gap-3 justify-center"
+data-aos="fade-up"
+data-aos-delay="200">
+
+<img src="aperto-de-maos 1.png"
+class="w-7 h-7">
+
+<span>
+Produção artesanal <br>
+feita à mão
+</span>
+
+</div>
+
+<div class="flex items-center gap-3 justify-center"
+data-aos="fade-up"
+data-aos-delay="300">
+
+<img src="verificado (1) 1.png"
+class="w-7 h-7">
+
+<span>
+Alta durabilidade em <br>
+madeira e ferro
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CATEGORIAS -->
+
+<section id="categorias"
+class="bg-gray-100 py-16">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<div class="grid md:grid-cols-3 gap-8">
+
+<a href="bolachas.html"
+data-aos="zoom-in"
+class="relative group rounded-2xl overflow-hidden">
+
+<img src="bolachas.png"
+class="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500">
+
+<div class="absolute inset-0 bg-black/30"></div>
+
+<div class="absolute bottom-6 left-6 text-white">
+
+<h3>BOLACHAS DE MADEIRA</h3>
+
+<p class="underline text-sm">
+VER MAIS
+</p>
+
+</div>
+
+</a>
+
+<a href="mesas.html"
+data-aos="zoom-in"
+data-aos-delay="150"
+class="relative group rounded-2xl overflow-hidden">
+
+<img src="mesas.png"
+class="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500">
+
+<div class="absolute inset-0 bg-black/30"></div>
+
+<div class="absolute bottom-6 left-6 text-white">
+
+<h3>MESAS E SUPORTES</h3>
+
+<p class="underline text-sm">
+VER MAIS
+</p>
+
+</div>
+
+</a>
+
+<a href="portas.html"
+data-aos="zoom-in"
+data-aos-delay="300"
+class="relative group rounded-2xl overflow-hidden">
+
+<img src="portas.png"
+class="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500">
+
+<div class="absolute inset-0 bg-black/30"></div>
+
+<div class="absolute bottom-6 left-6 text-white">
+
+<h3>PORTAS DE MADEIRA</h3>
+
+<p class="underline text-sm">
+VER MAIS
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJETOS -->
+
+<section id="projetos"
+class="bg-gray-100 py-16">
+
+<div class="max-w-6xl mx-auto px-6">
+
+<h2
+data-aos="fade-up"
+class="text-center text-2xl md:text-3xl mb-12">
+
+PROJETOS QUE
+<span class="italic font-semibold">
+TRANSFORMARAM
+</span>
+AMBIENTES
+
+</h2>
+
+<div
+data-aos="fade-right"
+class="relative bg-black rounded-2xl p-6">
+
+<div class="grid md:grid-cols-2 gap-6 items-center">
+
+<img src="mid-century-interior-design 1.png"
+class="rounded-xl">
+
+<div class="bg-gray-100 p-8 rounded-2xl md:-ml-24">
+
+<p class="text-lg font-semibold text-gray-800">
+
+Tradição e qualidade há mais de 20 anos em Monte Alto e região, com móveis e estruturas sob medida.
+
+</p>
+
+<button class="mt-6 bg-black text-white px-6 py-2 rounded-full hover:scale-105 transition">
+
+Explorar →
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="contato"
+class="relative bg-black text-white pt-20 pb-10 overflow-hidden">
+
+<div class="relative max-w-6xl mx-auto px-6">
+
+<p class="text-gray-400">
+
+Monte Alto - SP  
+(16) 99999-9999  
+
+</p>
+
+</div>
+
+</footer>
+
+<!-- 🛒 CARRINHO LATERAL -->
+
+<div id="overlayCarrinho"
+class="fixed inset-0 bg-black/50 hidden z-40"
+onclick="fecharCarrinho()"></div>
+
+<div id="carrinhoDrawer"
+class="fixed top-0 right-0 w-full sm:w-[350px] h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 flex flex-col">
+
+<div class="p-6 border-b flex justify-between items-center">
+
+<h2 class="text-lg font-semibold">
+Seu carrinho
+</h2>
+
+<button onclick="fecharCarrinho()">✕</button>
+
+</div>
+
+<div id="listaCarrinho"
+class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+
+<div class="p-6 border-t">
+
+<p class="text-lg font-semibold mb-4">
+
+Total:
+<span id="totalCarrinho">
+R$0
+</span>
+
+</p>
+
+<button onclick="finalizarWhats()"
+class="bg-green-600 text-white w-full py-3 rounded-full">
+
+Finalizar pelo WhatsApp
+
+</button>
+
+</div>
+
+</div>
+
+<!-- SCRIPT -->
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({duration:1000,once:true})
+
+/* STORAGE */
+
+function getCarrinho(){
+return JSON.parse(localStorage.getItem("carrinho"))||[]
+}
+
+function salvarCarrinho(c){
+localStorage.setItem("carrinho",JSON.stringify(c))
+atualizarContador()
+mostrarCarrinho()
+}
+
+/* ABRIR */
+
+function abrirCarrinho(){
+
+document
+.getElementById("overlayCarrinho")
+.classList.remove("hidden")
+
+document
+.getElementById("carrinhoDrawer")
+.style.transform="translateX(0)"
+
+mostrarCarrinho()
+
+}
+
+/* FECHAR */
+
+function fecharCarrinho(){
+
+document
+.getElementById("overlayCarrinho")
+.classList.add("hidden")
+
+document
+.getElementById("carrinhoDrawer")
+.style.transform="translateX(100%)"
+
+}
+
+/* MOSTRAR */
+
+function mostrarCarrinho(){
+
+let lista=document.getElementById("listaCarrinho")
+
+let carrinho=getCarrinho()
+
+lista.innerHTML=""
+
+let total=0
+
+carrinho.forEach((prod,i)=>{
+
+total+=prod.preco
+
+lista.innerHTML+=`
+
+<div class="flex gap-3 items-center border p-3 rounded-xl">
+
+<img src="${prod.img}"
+class="w-14 h-14 rounded-lg object-cover">
+
+<div class="flex-1">
+
+<p class="text-sm">
+${prod.nome}
+</p>
+
+<p class="text-sm font-semibold">
+R$${prod.preco}
+</p>
+
+</div>
+
+<button onclick="removerItem(${i})"
+class="text-red-500">
+
+✕
+
+</button>
+
+</div>
+
+`
+
+})
+
+document
+.getElementById("totalCarrinho")
+.innerText=`R$${total}`
+
+}
+
+/* REMOVER */
+
+function removerItem(i){
+
+let carrinho=getCarrinho()
+
+carrinho.splice(i,1)
+
+salvarCarrinho(carrinho)
+
+}
+
+/* CONTADOR */
+
+function atualizarContador(){
+
+document
+.getElementById("contadorCarrinho")
+.innerText=getCarrinho().length
+
+}
+
+/* FINALIZAR */
+
+function finalizarWhats(){
+
+let carrinho=getCarrinho()
+
+let texto="Olá! Quero:%0A"
+
+carrinho.forEach(p=>{
+
+texto+=`- ${p.nome} (R$${p.preco})%0A`
+
+})
+
+window.open(
+`https://wa.me/5516999999999?text=${texto}`
+)
+
+}
+
+atualizarContador()
+
+</script>
+
+</body>
+</html>

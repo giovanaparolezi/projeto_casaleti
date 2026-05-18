@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bolachas de Madeira - Casaleti</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Josefin Sans', sans-serif;
+}
+
+/* zoom */
+
+#imgPrincipal:hover{
+transform:scale(1.1);
+transition:.3s;
+}
+
+</style>
+
+</head>
+
+<body class="bg-gray-200">
+
+
+<div onclick="abrirCarrinho()"
+class="fixed top-4 right-4 z-50 cursor-pointer">
+
+<div class="relative bg-black text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition">
+
+<img src="carrinho-de-compras.png" class="w-5 md:w-6">
+
+<span id="contadorCarrinho"
+class="absolute -top-2 -right-2 bg-white text-black text-xs w-5 h-5 flex items-center justify-center rounded-full font-semibold">
+
+0
+
+</span>
+
+</div>
+
+</div>
+
+<div class="flex flex-col md:flex-row min-h-screen">
+
+<!-- SIDEBAR RESPONSIVA -->
+
+<div class="w-full md:w-64 bg-black text-white p-6 md:p-8 md:rounded-r-3xl">
+
+<h2 class="text-lg md:text-xl mb-6 tracking-widest">
+Filtrar
+</h2>
+
+<h3 class="text-sm text-gray-400 mb-2">
+Tipo
+</h3>
+
+<label class="block mb-2">
+<input type="checkbox" class="filtro" value="redonda"> Redonda
+</label>
+
+<label class="block mb-2">
+<input type="checkbox" class="filtro" value="oval"> Oval
+</label>
+
+<label class="block mb-4">
+<input type="checkbox" class="filtro" value="rustica"> Rústica
+</label>
+
+<h3 class="text-sm text-gray-400 mb-2">
+Preço máximo
+</h3>
+
+<input type="range"
+min="50"
+max="500"
+value="500"
+id="filtroPreco"
+class="w-full mb-2">
+
+<p id="valorPreco">
+Até R$500
+</p>
+
+</div>
+
+<!-- CONTEÚDO -->
+
+<div class="flex-1 p-6 md:p-10">
+
+<a href="index.html"
+class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow hover:scale-105 transition mb-6 text-sm md:text-base">
+
+← Página inicial
+
+</a>
+
+<h1 class="text-2xl md:text-3xl mb-8">
+
+<span class="text-gray-400 text-sm md:text-lg">
+CASALETI
+</span>
+
+<br>
+
+BOLACHAS DE MADEIRA
+
+</h1>
+
+<!-- PRODUTOS -->
+
+<div id="produtos"
+class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+<!-- PRODUTO 1 -->
+
+<div class="produto bg-white p-4 md:p-6 rounded-2xl shadow"
+data-tipo="redonda"
+data-preco="120">
+
+<img src="bolacha1.png"
+class="rounded-xl mb-4 w-full">
+
+<button onclick="abrirProduto(produtosLista[0])"
+class="bg-black text-white px-6 py-2 rounded-full w-full text-sm md:text-base">
+
+CONSULTAR
+
+</button>
+
+</div>
+
+<!-- PRODUTO 2 -->
+
+<div class="produto bg-white p-4 md:p-6 rounded-2xl shadow"
+data-tipo="oval"
+data-preco="180">
+
+<img src="bolacha2.png"
+class="rounded-xl mb-4 w-full">
+
+<button onclick="abrirProduto(produtosLista[1])"
+class="bg-black text-white px-6 py-2 rounded-full w-full">
+
+CONSULTAR
+
+</button>
+
+</div>
+
+<!-- PRODUTO 3 -->
+
+<div class="produto bg-white p-4 md:p-6 rounded-2xl shadow"
+data-tipo="rustica"
+data-preco="250">
+
+<img src="bolacha3.png"
+class="rounded-xl mb-4 w-full">
+
+<button onclick="abrirProduto(produtosLista[2])"
+class="bg-black text-white px-6 py-2 rounded-full w-full">
+
+CONSULTAR
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL PRODUTO -->
+
+<div id="modal"
+class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4">
+
+<div class="bg-white rounded-2xl p-6 md:p-8 max-w-4xl w-full relative">
+
+<button onclick="fecharModal()"
+class="absolute top-4 right-4 text-xl">
+
+✕
+
+</button>
+
+<div class="grid md:grid-cols-2 gap-6 md:gap-8">
+
+<div>
+
+<img id="imgPrincipal"
+class="rounded-xl mb-4 w-full">
+
+<div id="miniaturas"
+class="flex gap-2"></div>
+
+</div>
+
+<div>
+
+<h2 id="modalTitulo"
+class="text-xl md:text-2xl mb-4"></h2>
+
+<p id="modalPreco"
+class="text-lg md:text-xl font-semibold mb-2"></p>
+
+<p id="modalDim"
+class="text-gray-500 mb-4"></p>
+
+<p id="modalDesc"
+class="mb-6 text-sm md:text-base"></p>
+
+<button id="btnWhats"
+class="bg-green-600 text-white px-6 py-3 rounded-full w-full mb-3">
+
+WhatsApp
+
+</button>
+
+<button onclick="addCarrinho()"
+class="bg-black text-white px-6 py-3 rounded-full w-full">
+
+Adicionar ao carrinho
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- OVERLAY -->
+
+<div id="overlayCarrinho"
+class="fixed inset-0 bg-black/50 hidden z-40"
+onclick="fecharCarrinho()">
+</div>
+
+<!-- CARRINHO LATERAL -->
+
+<div id="carrinhoDrawer"
+class="fixed top-0 right-0 w-full sm:w-[350px] h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 flex flex-col">
+
+<div class="p-6 border-b flex justify-between items-center">
+
+<h2 class="text-lg font-semibold">
+Seu carrinho
+</h2>
+
+<button onclick="fecharCarrinho()">
+✕
+</button>
+
+</div>
+
+<div id="listaCarrinho"
+class="flex-1 overflow-y-auto p-6 space-y-4">
+
+</div>
+
+<div class="p-6 border-t">
+
+<button onclick="finalizarWhats()"
+class="bg-green-600 text-white w-full py-3 rounded-full">
+
+Finalizar pelo WhatsApp
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* PRODUTOS */
+
+const produtosLista=[
+
+{
+nome:"Bolacha Redonda Pequena",
+preco:"R$120",
+dim:"20cm",
+desc:"Bolacha artesanal em madeira maciça.",
+fotos:["bolacha1.png","bolacha1b.png","bolacha1c.png"]
+},
+
+{
+nome:"Bolacha Oval Média",
+preco:"R$180",
+dim:"30cm",
+desc:"Modelo oval com acabamento rústico.",
+fotos:["bolacha2.png","bolacha2b.png","bolacha2c.png"]
+},
+
+{
+nome:"Bolacha Rústica Grande",
+preco:"R$250",
+dim:"40cm",
+desc:"Peça robusta com madeira natural.",
+fotos:["bolacha3.png","bolacha3b.png","bolacha3c.png"]
+}
+
+]
+
+/* MODAL */
+
+function abrirProduto(prod){
+
+document.getElementById("modalTitulo").innerText=prod.nome
+document.getElementById("modalPreco").innerText=prod.preco
+document.getElementById("modalDim").innerText="Dimensão: "+prod.dim
+document.getElementById("modalDesc").innerText=prod.desc
+
+document.getElementById("imgPrincipal").src=prod.fotos[0]
+
+let mini=document.getElementById("miniaturas")
+mini.innerHTML=""
+
+prod.fotos.forEach(f=>{
+let img=document.createElement("img")
+img.src=f
+img.className="w-14 h-14 rounded-lg cursor-pointer border"
+img.onclick=()=>document.getElementById("imgPrincipal").src=f
+mini.appendChild(img)
+})
+
+document.getElementById("modal")
+.classList.remove("hidden")
+
+document.getElementById("modal")
+.classList.add("flex")
+
+}
+
+function fecharModal(){
+document.getElementById("modal").classList.add("hidden")
+}
+
+/* CARRINHO */
+
+function getCarrinho(){
+return JSON.parse(localStorage.getItem("carrinho"))||[]
+}
+
+function salvarCarrinho(c){
+localStorage.setItem("carrinho",JSON.stringify(c))
+atualizarContador()
+mostrarCarrinho()
+}
+
+function addCarrinho(){
+
+let carrinho=getCarrinho()
+
+carrinho.push({
+nome:document.getElementById("modalTitulo").innerText
+})
+
+salvarCarrinho(carrinho)
+
+alert("Produto adicionado!")
+
+}
+
+/* DRAWER */
+
+function abrirCarrinho(){
+
+document.getElementById("overlayCarrinho")
+.classList.remove("hidden")
+
+document.getElementById("carrinhoDrawer")
+.style.transform="translateX(0)"
+
+mostrarCarrinho()
+
+}
+
+function fecharCarrinho(){
+
+document.getElementById("overlayCarrinho")
+.classList.add("hidden")
+
+document.getElementById("carrinhoDrawer")
+.style.transform="translateX(100%)"
+
+}
+
+/* LISTA */
+
+function mostrarCarrinho(){
+
+let lista=document.getElementById("listaCarrinho")
+
+let carrinho=getCarrinho()
+
+lista.innerHTML=""
+
+carrinho.forEach((prod,i)=>{
+
+lista.innerHTML+=`
+
+<div class="border rounded-xl p-4 flex justify-between items-center">
+
+<span>${prod.nome}</span>
+
+<button onclick="removerItem(${i})"
+class="text-red-500">
+
+✕
+
+</button>
+
+</div>
+
+`
+
+})
+
+}
+
+/* REMOVER */
+
+function removerItem(i){
+
+let carrinho=getCarrinho()
+
+carrinho.splice(i,1)
+
+salvarCarrinho(carrinho)
+
+}
+
+/* CONTADOR */
+
+function atualizarContador(){
+
+document.getElementById("contadorCarrinho")
+.innerText=getCarrinho().length
+
+}
+
+/* WHATS */
+
+function finalizarWhats(){
+
+let carrinho=getCarrinho()
+
+let texto="Olá! Quero estes produtos:%0A"
+
+carrinho.forEach(p=>{
+texto+=`- ${p.nome}%0A`
+})
+
+window.open(
+`https://wa.me/5516999999999?text=${texto}`
+)
+
+}
+
+/* FILTRO PREÇO */
+
+document.getElementById("filtroPreco")
+.addEventListener("input",function(){
+
+let val=this.value
+
+document.getElementById("valorPreco")
+.innerText=`Até R$${val}`
+
+document.querySelectorAll(".produto")
+.forEach(p=>{
+
+let preco=parseInt(p.dataset.preco)
+
+p.style.display=preco<=val?"block":"none"
+
+})
+
+})
+
+/* INIT */
+
+atualizarContador()
+
+</script>
+
+</body>
+</html>
