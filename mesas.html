@@ -287,8 +287,12 @@ Seu carrinho
 
 <div id="listaCarrinho"
 class="flex-1 overflow-y-auto p-6 space-y-4"></div>
-
 <div class="p-6 border-t">
+
+<div id="totalCarrinho"
+class="mb-4 text-xl font-semibold text-left">
+Total: R$ 0,00
+</div>
 
 <button onclick="finalizarWhats()"
 class="bg-black text-white w-full py-4 rounded-2xl hover:bg-neutral-800 transition">
@@ -298,6 +302,7 @@ Finalizar no WhatsApp
 </button>
 
 </div>
+
 
 </div>
 <a
@@ -634,9 +639,6 @@ document
 .style.transform="translateX(100%)"
 
 }
-
-/* MOSTRAR */
-
 function mostrarCarrinho(){
 
 let lista=document.getElementById("listaCarrinho")
@@ -659,11 +661,16 @@ Seu carrinho está vazio
 
 `
 
+document.getElementById("totalCarrinho").innerText =
+"Total: R$ 0,00"
+
+return
+
 }
 
 carrinho.forEach((prod,i)=>{
 
-total+=Number(prod.preco)
+total += Number(prod.preco)
 
 lista.innerHTML+=`
 
@@ -679,7 +686,7 @@ ${prod.nome}
 </p>
 
 <p class="font-semibold">
-R$${Number(prod.preco).toFixed(2)}
+R$ ${Number(prod.preco).toFixed(2).replace(".",",")}
 </p>
 
 </div>
@@ -696,6 +703,9 @@ class="text-red-500 text-lg">
 `
 
 })
+
+document.getElementById("totalCarrinho").innerText =
+`Total: R$ ${total.toFixed(2).replace(".", ",")}`
 
 }
 
