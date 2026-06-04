@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casaleti - Peças artesanais</title>
+<title>Casaleti - Peças artesanais disponíveis</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -65,10 +65,27 @@
     z-index: 5;
     box-shadow: 0 10px 25px rgba(0,0,0,.25);
 }
+.selo-entrega {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #22c55e;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    z-index: 10;
+    letter-spacing: 0.5px;
+}
 @media(max-width:768px) {
     .cardProjeto {
         width: 320px;
         height: 220px;
+    }
+    .selo-entrega {
+        font-size: 10px;
+        padding: 4px 10px;
     }
 }
 html {
@@ -99,6 +116,10 @@ body {
 .inputPremium:focus {
     border-color: #fff;
     outline: none;
+}
+.inputPremium option {
+    background: #1a1a1a;
+    color: white;
 }
 ::-webkit-scrollbar {
     width: 8px;
@@ -187,7 +208,7 @@ body {
             <h1 class="tracking-[0.25em] text-sm md:text-lg font-semibold">CASALETI</h1>
             <ul class="hidden md:flex items-center gap-10 text-gray-700">
                 <li><a href="index.html" class="hover:text-black transition">Início</a></li>
-                <li><a href="#categorias" class="hover:text-black transition">Categorias</a></li>
+                <li><a href="#categorias" class="hover:text-black transition">Peças</a></li>
                 <li><a href="#contato" class="hover:text-black transition">Contato</a></li>
             </ul>
             <div class="flex items-center gap-4">
@@ -201,34 +222,35 @@ body {
         <div id="menuMobile" class="hidden absolute top-24 left-1/2 -translate-x-1/2 w-[92%] bg-white rounded-3xl shadow-2xl p-6 md:hidden">
             <ul class="flex flex-col gap-6 text-gray-700">
                 <li><a href="index.html">Início</a></li>
-                <li><a href="#categorias">Categorias</a></li>
+                <li><a href="#categorias">Peças</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </div>
     </header>
 
     <div class="relative z-10 flex items-start md:items-center justify-center text-center px-6 min-h-screen pt-32 md:pt-0">
         <h2 data-aos="fade-up" class="text-white text-[2.2rem] sm:text-[3.2rem] md:text-[2.6rem] lg:text-[3.6rem] font-light tracking-[0.08em] leading-[1.05] max-w-6xl">
-            TRANSFORME SEU ESPAÇO<br>
-            COM MÓVEIS QUE COMBINEM<br>
-            BELEZA E PERSONALIDADE
+            PEÇAS ÚNICAS<br>
+            PARA DECORAR SEU ESPAÇO<br>
+            COM BELEZA E PERSONALIDADE
         </h2>
     </div>
 
     <div class="absolute bottom-0 left-0 w-full bg-black/90 backdrop-blur-xl py-8 z-20">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-white">
-            <div class="flex gap-4 items-center"><img src="entrega-rapida 1.png" class="w-8 h-8 object-contain"><p class="leading-relaxed text-sm">Entrega gratuita em Monte Alto e região</p></div>
-            <div class="flex gap-4 items-center"><img src="medicao 1.png" class="w-8 h-8 object-contain"><p class="leading-relaxed text-sm">Peças sob medida e personalizáveis</p></div>
-            <div class="flex gap-4 items-center"><img src="aperto-de-maos 1.png" class="w-8 h-8 object-contain"><p class="leading-relaxed text-sm">Produção artesanal feita à mão</p></div>
-            <div class="flex gap-4 items-center"><img src="verificado (1) 1.png" class="w-8 h-8 object-contain"><p class="leading-relaxed text-sm">Alta durabilidade em madeira e ferro</p></div>
+            <div class="flex gap-4 items-center"><img src="entrega-rapida 1.png" class="w-8 h-8 object-contain"><p class="leading-relaxed text-sm">Entrega em Monte Alto e região</p></div>
+            <div class="flex gap-4 items-center"><img src="medicao 1.png" class="w-8 h-8 object-contain"><p class="leading-relaxed text-sm">Peças prontas e disponíveis</p></div>
+            <div class="flex gap-4 items-center"><img src="aperto-de-maos 1.png" class="w-8 h-8 object-contain"><p class="leading-relaxed text-sm">Atendimento rápido pelo WhatsApp</p></div>
+            <div class="flex gap-4 items-center"><img src="verificado (1) 1.png" class="w-8 h-8 object-contain"><p class="leading-relaxed text-sm">Peças exclusivas e artesanais</p></div>
         </div>
     </div>
 </section>
 
-<!-- PROJETOS EM DESTAQUE - SLIDER CORRIGIDO (AUTOMÁTICO + MANUAL) -->
+<!-- PEÇAS EM DESTAQUE - SLIDER -->
 <section class="bg-[#f7f7f7] py-24 overflow-hidden">
     <div class="text-center mb-12">
-        <p class="tracking-[0.3em] text-gray-500 text-sm mb-3">PROJETOS REALIZADOS</p>
-        <h2 class="text-4xl md:text-5xl font-light">Nossos Principais Trabalhos</h2>
+        <p class="tracking-[0.3em] text-gray-500 text-sm mb-3">PROJETOS</p>
+        <h2 class="text-4xl md:text-5xl font-light">Realizados</h2>
     </div>
 
     <div class="slider-container">
@@ -239,36 +261,39 @@ body {
             <div class="sliderTrack" id="sliderTrack">
                 <div class="cardProjeto">
                     <img src="projetos/balcao.png" alt="Balcão">
-                    <img src="projetos/cacaushow.png" class="logoCliente" alt="Cacau Show">
+            
                     <div class="infoProjeto">
-                        <h3 class="text-2xl mb-2">Cacau Show</h3>
-                        <p class="text-sm tracking-wider">Mobiliário artesanal personalizado</p>
+                        <h3 class="text-2xl mb-2">Balcão Rústico</h3>
+                        <p class="text-sm tracking-wider">Madeira maciça • Peça única</p>
                     </div>
                 </div>
                 <div class="cardProjeto">
                     <img src="projetos/torre.png" alt="Torre">
-                    <img src="projetos/cacaushow.png" class="logoCliente" alt="Cacau Show">
+                  
                     <div class="infoProjeto">
-                        <h3 class="text-2xl mb-2">Cacau Show</h3>
-                        <p class="text-sm tracking-wider">Torre chocolate personalizado</p>
+                        <h3 class="text-2xl mb-2">Torre Expositiva</h3>
+                        <p class="text-sm tracking-wider">Ideal para lojas ou decoração</p>
                     </div>
                 </div>
                 <div class="cardProjeto">
                     <img src="projetos/escada.png" alt="Escada">
+             
                     <div class="infoProjeto">
-                        <h3 class="text-2xl mb-2">Escada sob medida</h3>
-                        <p class="text-sm tracking-wider">Projeto residencial</p>
+                        <h3 class="text-2xl mb-2">Escada Decorativa</h3>
+                        <p class="text-sm tracking-wider">Peça rústica e charmosa</p>
                     </div>
                 </div>
                 <div class="cardProjeto">
                     <img src="projetos/bolachas.png" alt="Bolachas">
+               
                     <div class="infoProjeto">
-                        <h3 class="text-2xl mb-2">Mesa de Bolachas de Madeira</h3>
-                        <p class="text-sm tracking-wider">Mesa e decoração em madeira nobre</p>
+                        <h3 class="text-2xl mb-2">Mesa com Bolacha</h3>
+                        <p class="text-sm tracking-wider">Madeira natural • Design único</p>
                     </div>
                 </div>
                 <div class="cardProjeto">
                     <img src="projetos/balcao.png" alt="Balcão Industrial">
+                   
                     <div class="infoProjeto">
                         <h3 class="text-2xl mb-2">Balcão Industrial</h3>
                         <p class="text-sm tracking-wider">Estrutura em madeira maciça</p>
@@ -276,9 +301,10 @@ body {
                 </div>
                 <div class="cardProjeto">
                     <img src="projetos/torre.png" alt="Torre Expositiva">
+                  
                     <div class="infoProjeto">
-                        <h3 class="text-2xl mb-2">Torre Expositiva</h3>
-                        <p class="text-sm tracking-wider">Projeto para loja conceito</p>
+                        <h3 class="text-2xl mb-2">Torre Decorativa</h3>
+                        <p class="text-sm tracking-wider">Peça exclusiva</p>
                     </div>
                 </div>
             </div>
@@ -288,68 +314,114 @@ body {
     </div>
 </section>
 
-<!-- CATEGORIAS -->
+<!-- CATEGORIAS / PEÇAS DISPONÍVEIS -->
 <section id="categorias" class="bg-[#f3f3f3] py-20">
     <div class="max-w-7xl mx-auto px-6">
         <div class="mb-14 text-center">
-            <h2 class="text-4xl md:text-5xl font-light">Categorias</h2>
+            <p class="tracking-[0.3em] text-gray-500 text-sm mb-3">ESCOLHA SUA PEÇA</p>
+            <h2 class="text-4xl md:text-5xl font-light">Peças Disponíveis</h2>
         </div>
         <div class="grid md:grid-cols-3 gap-8">
             <a href="bolachas.html" class="cardCategoria relative overflow-hidden rounded-[32px] shadow-2xl group">
                 <img src="bolachas.png" class="w-full h-[320px] object-cover">
                 <div class="absolute inset-0 bg-black/35"></div>
                 <div class="absolute bottom-8 left-8 text-white">
-                    <h3 class="text-2xl mb-2">Bolachas de Madeira e Artesanato</h3>
-                    <p class="underline tracking-wider text-sm">VER MAIS</p>
+                    <h3 class="text-2xl mb-2">Bolachas de Madeira</h3>
+                    <p class="underline tracking-wider text-sm">VER PEÇAS</p>
                 </div>
+                <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full">Personalizáveis</div>
             </a>
             <a href="mesas.html" class="cardCategoria relative overflow-hidden rounded-[32px] shadow-2xl group">
                 <img src="mesa/mesas.png" class="w-full h-[320px] object-cover">
                 <div class="absolute inset-0 bg-black/35"></div>
                 <div class="absolute bottom-8 left-8 text-white">
                     <h3 class="text-2xl mb-2">Mesas e Suportes</h3>
-                    <p class="underline tracking-wider text-sm">VER MAIS</p>
+                    <p class="underline tracking-wider text-sm">VER PEÇAS</p>
                 </div>
+                <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full">Prontas</div>
             </a>
             <a href="portas.html" class="cardCategoria relative overflow-hidden rounded-[32px] shadow-2xl group">
                 <img src="portas.png" class="w-full h-[320px] object-cover">
                 <div class="absolute inset-0 bg-black/35"></div>
                 <div class="absolute bottom-8 left-8 text-white">
                     <h3 class="text-2xl mb-2">Portas de Madeira</h3>
-                    <p class="underline tracking-wider text-sm">VER MAIS</p>
+                    <p class="underline tracking-wider text-sm">VER PEÇAS</p>
                 </div>
+                <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full">Prontas</div>
             </a>
         </div>
     </div>
 </section>
 
-<!-- CONTATO -->
+<!-- CONTATO - VERSÃO VENDA -->
 <section id="contato" class="bg-[#0c0c0c] py-20 relative overflow-hidden">
     <div class="absolute w-[400px] h-[400px] bg-white/5 rounded-full blur-[120px] -top-32 -left-32"></div>
     <div class="absolute w-[350px] h-[350px] bg-white/5 rounded-full blur-[100px] bottom-0 right-0"></div>
     <div class="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
+        
+        <!-- TEXTO - MODIFICADO PARA VENDA -->
         <div>
-            <h2 class="text-white text-3xl md:text-5xl font-light leading-tight mb-6">Seu projeto começa<br>com uma conversa.</h2>
-            <p class="text-gray-400 leading-relaxed mb-10 max-w-lg">Criamos móveis artesanais em madeira e ferro, desenvolvidos sob medida para transformar ambientes com personalidade e sofisticação.</p>
+            <h2 class="text-white text-3xl md:text-5xl font-light leading-tight mb-6">
+                Peças únicas<br>
+                disponíveis para venda.
+            </h2>
+            <p class="text-gray-400 leading-relaxed mb-10 max-w-lg">
+                Confira nossas bolachas de madeira, mesas e artesanatos. 
+                São peças exclusivas, prontas para decorar seu ambiente 
+                com personalidade e sofisticação.
+            </p>
             <div class="space-y-4 text-gray-300">
-                <div class="flex items-center gap-4"><div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center"><i data-lucide="map-pin" class="w-5 h-5"></i></div><p>Monte Alto • SP</p></div>
-                <div class="flex items-center gap-4"><div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center"><i data-lucide="phone" class="w-5 h-5"></i></div><p>(16) 99992-4544</p></div>
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                    </div>
+                    <p>Monte Alto • SP (retirada ou entrega)</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    </div>
+                    <p>(16) 99992-4544</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                        <i data-lucide="package" class="w-5 h-5"></i>
+                    </div>
+                    <p>Peças prontas para entrega imediata</p>
+                </div>
             </div>
-            <button onclick="abrirWhats()" class="mt-10 bg-white text-black px-8 py-4 rounded-2xl flex items-center gap-4 hover:scale-105 transition shadow-2xl"><img src="whats.png" alt="WhatsApp" class="w-5 h-5">Falar no WhatsApp</button>
+            <button onclick="abrirWhats()" class="mt-10 bg-white text-black px-8 py-4 rounded-2xl flex items-center gap-4 hover:scale-105 transition shadow-2xl">
+                <img src="whats.png" alt="WhatsApp" class="w-5 h-5">
+                Ver peças disponíveis
+            </button>
         </div>
+
+        <!-- FORMULÁRIO - MODIFICADO PARA VENDA -->
         <div class="bg-white/5 border border-white/10 rounded-[32px] p-6 md:p-8 backdrop-blur-xl shadow-2xl">
-            <h3 class="text-white text-2xl md:text-3xl font-light mb-8">Solicite seu projeto</h3>
+            <h3 class="text-white text-2xl md:text-3xl font-light mb-8">
+                Quero comprar uma peça
+            </h3>
             <div class="space-y-4">
                 <input id="nome" type="text" placeholder="Seu nome" class="inputPremium w-full p-4 rounded-2xl text-white placeholder-gray-500">
-                <input id="telefone" type="tel" placeholder="Telefone" class="inputPremium w-full p-4 rounded-2xl text-white placeholder-gray-500">
-                <select id="tipo" class="inputPremium w-full p-4 rounded-2xl text-gray-400">
-                    <option>Tipo de projeto</option>
-                    <option>Mesa personalizada</option>
-                    <option>Porta sob medida</option>
-                    <option>Bolacha decorativa</option>
+                <input id="telefone" type="tel" placeholder="Seu WhatsApp" class="inputPremium w-full p-4 rounded-2xl text-white placeholder-gray-500">
+                
+                <select id="tipo" class="inputPremium w-full p-4 rounded-2xl text-white">
+                    <option value="" disabled selected class="text-gray-400">Qual peça você tem interesse?</option>
+                    <option>Bolacha de Madeira</option>
+                    <option>Peças de Artesanato</option>
+                    <option>Mesas e Suportes</option>
+                    <option>Portas</option>
+                    <option>Outra peça - me conte abaixo</option>
                 </select>
-                <textarea id="descricao" rows="4" placeholder="Descreva seu projeto" class="inputPremium w-full p-4 rounded-2xl text-white placeholder-gray-500"></textarea>
-                <button onclick="enviarWhatsForm()" class="w-full bg-white text-black py-4 rounded-2xl hover:scale-[1.02] transition shadow-xl">Enviar solicitação</button>
+
+                <textarea id="descricao" rows="3" placeholder="Qual tamanho ou modelo você procura? (opcional)" class="inputPremium w-full p-4 rounded-2xl text-white placeholder-gray-500"></textarea>
+
+            
+        
+
+                <button onclick="enviarWhatsVenda()" class="w-full bg-white text-black py-4 rounded-2xl hover:scale-[1.02] transition shadow-xl">
+                    Quero saber disponibilidade
+                </button>
             </div>
         </div>
     </div>
@@ -359,9 +431,21 @@ body {
 <footer class="bg-[#080808] border-t border-white/10">
     <div class="max-w-7xl mx-auto px-6 py-16">
         <div class="grid lg:grid-cols-3 gap-14">
-            <div><h2 class="text-white text-3xl tracking-[0.25em] font-light mb-6">CASALETI</h2><p class="text-gray-400 leading-relaxed max-w-sm">Móveis artesanais em madeira e ferro, desenvolvidos sob medida para ambientes sofisticados.</p></div>
-            <div><h3 class="text-white text-xl mb-6">Contato</h3><div class="space-y-4 text-gray-400"><div class="flex items-center gap-4"><i data-lucide="map-pin" class="w-5 h-5"></i><p>Monte Alto • SP</p></div><div class="flex items-center gap-4"><i data-lucide="phone" class="w-5 h-5"></i><p>(16) 99992-4544</p></div><div class="flex items-center gap-4"><i data-lucide="mail" class="w-5 h-5"></i><p>Chicocasaleti@gmail.com</p></div></div></div>
-            <div class="rounded-[28px] overflow-hidden h-[260px]"><iframe src="https://www.google.com/maps?q=Monte%20Alto%20SP&output=embed" width="100%" height="100%" style="border:0;" loading="lazy"></iframe></div>
+            <div>
+                <h2 class="text-white text-3xl tracking-[0.25em] font-light mb-6">CASALETI</h2>
+                <p class="text-gray-400 leading-relaxed max-w-sm">Peças artesanais exclusivas em madeira, disponíveis para venda imediata.</p>
+            </div>
+            <div>
+                <h3 class="text-white text-xl mb-6">Contato</h3>
+                <div class="space-y-4 text-gray-400">
+                    <div class="flex items-center gap-4"><i data-lucide="map-pin" class="w-5 h-5"></i><p>Monte Alto • SP</p></div>
+                    <div class="flex items-center gap-4"><i data-lucide="phone" class="w-5 h-5"></i><p>(16) 99992-4544</p></div>
+                    <div class="flex items-center gap-4"><i data-lucide="mail" class="w-5 h-5"></i><p>Chicocasaleti@gmail.com</p></div>
+                </div>
+            </div>
+            <div class="rounded-[28px] overflow-hidden h-[260px]">
+                <iframe src="https://www.google.com/maps?q=Monte%20Alto%20SP&output=embed" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
+            </div>
         </div>
     </div>
 </footer>
@@ -373,11 +457,11 @@ body {
     <div id="listaCarrinho" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
     <div class="p-6 border-t"><p class="text-lg mb-5">Total: <span id="totalCarrinho" class="font-semibold">R$0</span></p><button onclick="finalizarWhats()" class="bg-black text-white w-full py-4 rounded-2xl hover:bg-neutral-800 transition">Finalizar no WhatsApp</button></div>
 </div>
-<a href="https://wa.me/5516999924544?text=Olá!%20Gostaria%20de%20mais%20informações." target="_blank" class="fixed bottom-6 right-6 z-50 hover:scale-110 transition"><img src="whats.png" alt="WhatsApp" class="w-16 h-16"></a>
+<a href="https://wa.me/5516999924544?text=Olá!%20Gostaria%20de%20ver%20as%20peças%20disponíveis." target="_blank" class="fixed bottom-6 right-6 z-50 hover:scale-110 transition"><img src="whats.png" alt="WhatsApp" class="w-16 h-16"></a>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-// ========== SLIDER FUNCIONANDO 100% ==========
+// ========== SLIDER ==========
 const track = document.getElementById('sliderTrack');
 const prevBtn = document.getElementById('btnPrevSlider');
 const nextBtn = document.getElementById('btnNextSlider');
@@ -386,7 +470,7 @@ const indicatorsContainer = document.getElementById('sliderIndicators');
 let currentIndex = 0;
 let totalCards = 0;
 let cardWidth = 420;
-let gap = 1;
+let gap = 30;
 let autoplayInterval;
 let isHovering = false;
 
@@ -394,9 +478,8 @@ function updateDimensions() {
     const card = track.querySelector('.cardProjeto');
     if (card) {
         cardWidth = card.offsetWidth;
-        gap = 1;
+        gap = 30;
     }
-    // Ajuste responsivo
     if (window.innerWidth <= 768) {
         cardWidth = 320;
     }
@@ -416,22 +499,11 @@ function updateSlider() {
     updateIndicators();
 }
 
-function goToSlide(index) {
-    if (index < 0) {
-        currentIndex = 0;
-    } else if (index > getMaxIndex()) {
-        currentIndex = getMaxIndex();
-    } else {
-        currentIndex = index;
-    }
-    updateSlider();
-}
-
 function nextSlide() {
     if (currentIndex < getMaxIndex()) {
         currentIndex++;
     } else {
-        currentIndex = 0; // Volta ao início (loop infinito)
+        currentIndex = 0;
     }
     updateSlider();
 }
@@ -440,7 +512,7 @@ function prevSlide() {
     if (currentIndex > 0) {
         currentIndex--;
     } else {
-        currentIndex = getMaxIndex(); // Vai para o final (loop infinito)
+        currentIndex = getMaxIndex();
     }
     updateSlider();
 }
@@ -465,7 +537,8 @@ function createIndicators() {
         if (i === currentIndex) dot.classList.add('active');
         dot.addEventListener('click', () => {
             stopAutoplay();
-            goToSlide(i);
+            currentIndex = i;
+            updateSlider();
             startAutoplay();
         });
         indicatorsContainer.appendChild(dot);
@@ -488,64 +561,31 @@ function stopAutoplay() {
     }
 }
 
-function resetAutoplay() {
-    stopAutoplay();
-    startAutoplay();
-}
+if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); stopAutoplay(); startAutoplay(); });
+if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); stopAutoplay(); startAutoplay(); });
 
-// Eventos
-if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-        nextSlide();
-        resetAutoplay();
-    });
-}
-
-if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-        prevSlide();
-        resetAutoplay();
-    });
-}
-
-// Pausar autoplay ao passar o mouse
 const sliderContainer = document.querySelector('.sliderProjetos');
 if (sliderContainer) {
-    sliderContainer.addEventListener('mouseenter', () => {
-        isHovering = true;
-        stopAutoplay();
-    });
-    sliderContainer.addEventListener('mouseleave', () => {
-        isHovering = false;
-        startAutoplay();
-    });
+    sliderContainer.addEventListener('mouseenter', () => { isHovering = true; stopAutoplay(); });
+    sliderContainer.addEventListener('mouseleave', () => { isHovering = false; startAutoplay(); });
 }
 
-// Inicializar slider
 function initSlider() {
     totalCards = track.querySelectorAll('.cardProjeto').length;
     if (totalCards === 0) return;
-    
     updateDimensions();
-    
-    // Ajusta largura do track
-    const trackWidth = totalCards * getTotalWidth();
-    track.style.width = `${trackWidth}px`;
-    
+    track.style.width = `${totalCards * getTotalWidth()}px`;
     createIndicators();
-    goToSlide(0);
+    updateSlider();
     startAutoplay();
 }
 
-// Atualizar ao redimensionar a tela
 window.addEventListener('resize', () => {
     updateDimensions();
-    const trackWidth = totalCards * getTotalWidth();
-    track.style.width = `${trackWidth}px`;
+    track.style.width = `${totalCards * getTotalWidth()}px`;
     updateSlider();
 });
 
-// Iniciar quando a página carregar
 setTimeout(initSlider, 100);
 
 // ========== MENU ==========
@@ -553,17 +593,33 @@ function toggleMenu() {
     document.getElementById("menuMobile").classList.toggle("hidden");
 }
 
-// ========== WHATSAPP ==========
+// ========== WHATSAPP - VERSÃO VENDA ==========
 function abrirWhats() {
-    window.open("https://wa.me/5516999924544");
+    window.open("https://wa.me/5516999924544?text=Olá! Gostaria de saber quais peças estão disponíveis para venda.");
 }
 
-function enviarWhatsForm() {
+function enviarWhatsVenda() {
     let nome = document.getElementById("nome").value;
     let tel = document.getElementById("telefone").value;
-    let tipo = document.getElementById("tipo").value;
-    let desc = document.getElementById("descricao").value;
-    let msg = `Olá! Meu nome é ${nome}%0ATelefone: ${tel}%0AProjeto: ${tipo}%0ADescrição: ${desc}`;
+    let peca = document.getElementById("tipo").value;
+    let detalhes = document.getElementById("descricao").value;
+    
+    if (!nome || !tel) {
+        alert("Por favor, preencha seu nome e telefone!");
+        return;
+    }
+    
+    let msg = `Olá! Meu nome é ${nome}%0A`;
+    msg += `Telefone: ${tel}%0A%0A`;
+    msg += `📦 **TENHO INTERESSE EM COMPRAR:**%0A`;
+    msg += `Peça: ${peca}%0A`;
+    
+    if (detalhes && detalhes !== "Qual tamanho ou modelo você procura? (opcional)") {
+        msg += `Detalhes: ${detalhes}%0A`;
+    }
+    
+    msg += `%0AAs peças ainda estão disponíveis?`;
+
     window.open(`https://wa.me/5516999924544?text=${msg}`);
 }
 
@@ -578,8 +634,13 @@ function mostrarCarrinho() {
     let carrinho = getCarrinho();
     lista.innerHTML = "";
     let total = 0;
+    if (carrinho.length === 0) {
+        lista.innerHTML = `<div class="text-center text-gray-400 py-10">Seu carrinho está vazio</div>`;
+        document.getElementById("totalCarrinho").innerText = "R$0";
+        return;
+    }
     carrinho.forEach((prod, i) => {
-        total += prod.preco;
+        total += Number(prod.preco);
         lista.innerHTML += `<div class="border border-black/10 rounded-2xl p-4 flex gap-4 items-center"><img src="${prod.img}" class="w-16 h-16 rounded-xl object-cover"><div class="flex-1"><p class="text-sm">${prod.nome}</p><p class="font-semibold">R$${Number(prod.preco).toFixed(2)}</p></div><button onclick="removerItem(${i})" class="text-red-500 text-lg">✕</button></div>`;
     });
     document.getElementById("totalCarrinho").innerText = `R$${total.toFixed(2)}`;
@@ -589,12 +650,12 @@ function removerItem(i) { let carrinho = getCarrinho(); carrinho.splice(i, 1); s
 function atualizarContador() { document.getElementById("contadorCarrinho").innerText = getCarrinho().length; }
 function finalizarWhats() {
     let carrinho = getCarrinho();
-    let texto = "Olá! Quero:%0A";
-    carrinho.forEach(p => { texto += `- ${p.nome} (R$${p.preco})%0A`; });
+    if (carrinho.length === 0) { alert("Seu carrinho está vazio!"); return; }
+    let texto = "Olá! Tenho interesse nestas peças:%0A%0A";
+    carrinho.forEach(p => { texto += `- ${p.nome} (R$${Number(p.preco).toFixed(2)})%0A`; });
     window.open(`https://wa.me/5516999924544?text=${texto}`);
 }
 
-// Inicializar
 AOS.init({ duration: 1000, once: true });
 lucide.createIcons();
 atualizarContador();
