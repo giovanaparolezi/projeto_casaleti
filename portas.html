@@ -9,37 +9,50 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
+<script src="https://unpkg.com/lucide@latest"></script>
+
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-body{
-font-family:'Josefin Sans', sans-serif;
+html{
+scroll-behavior:smooth;
 }
 
-/* zoom */
+body{
+font-family:'Josefin Sans',sans-serif;
+background:#efefef;
+overflow-x:hidden;
+}
 
-#imgPrincipal:hover{
-transform:scale(1.1);
-transition:.3s;
+/* scrollbar */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#111;
+border-radius:999px;
 }
 
 </style>
 
 </head>
 
-<body class="bg-gray-200">
+<body>
 
+<!-- CARRINHO -->
 
 <div onclick="abrirCarrinho()"
-class="fixed top-4 right-4 z-50 cursor-pointer">
+class="fixed top-5 right-5 z-50 cursor-pointer">
 
-<div class="relative bg-black text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition">
+<div class="relative bg-black text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-105 transition duration-300">
 
-<img src="carrinho-de-compras.png" class="w-5 md:w-6">
+<i data-lucide="shopping-bag" class="w-5 h-5"></i>
 
 <span id="contadorCarrinho"
-class="absolute -top-2 -right-2 bg-white text-black text-xs w-5 h-5 flex items-center justify-center rounded-full font-semibold">
+class="absolute -top-1 -right-1 bg-white text-black text-xs w-5 h-5 rounded-full flex items-center justify-center font-semibold">
 
 0
 
@@ -49,186 +62,165 @@ class="absolute -top-2 -right-2 bg-white text-black text-xs w-5 h-5 flex items-c
 
 </div>
 
-<div class="flex flex-col md:flex-row min-h-screen">
+<div class="flex flex-col lg:flex-row min-h-screen">
 
-<!-- SIDEBAR RESPONSIVA -->
+<!-- SIDEBAR -->
 
-<div class="w-full md:w-64 bg-black text-white p-6 md:p-8 md:rounded-r-3xl">
+<aside class="w-full lg:w-72 bg-black text-white p-8 lg:rounded-r-[40px] shadow-2xl lg:sticky lg:top-0 lg:h-screen overflow-y-auto">
 
-<h2 class="text-lg md:text-xl mb-6 tracking-widest">
-Filtrar
+<p class="tracking-[0.3em] text-gray-500 text-sm mb-4">
+CASALETI
+</p>
+
+<h2 class="text-3xl font-light mb-10">
+
+Filtrar produtos
+
 </h2>
 
-<h3 class="text-sm text-gray-400 mb-2">
-Tipo
-</h3>
+<!-- FILTROS -->
+<div class="sticky top-6 self-start">
 
-<label class="block mb-2">
-<input type="checkbox" class="filtro" value="redonda"> Redonda
-</label>
+    <div class="space-y-8">
 
-<label class="block mb-2">
-<input type="checkbox" class="filtro" value="oval"> Oval
-</label>
+        <div>
+            <h3 class="text-gray-400 mb-4 text-sm tracking-widest">
+                TIPO
+            </h3>
 
-<label class="block mb-4">
-<input type="checkbox" class="filtro" value="rustica"> Rústica
-</label>
+            <div class="space-y-3">
 
-<h3 class="text-sm text-gray-400 mb-2">
-Preço máximo
-</h3>
+                <label class="flex items-center gap-3 text-gray-300 cursor-pointer">
+                    <input type="checkbox"
+                           class="accent-white filtro"
+                           value="pivotante">
+                    Pivotante
+                </label>
 
-<input type="range"
-min="50"
-max="500"
-value="500"
-id="filtroPreco"
-class="w-full mb-2">
+                <label class="flex items-center gap-3 text-gray-300 cursor-pointer">
+                    <input type="checkbox"
+                           class="accent-white filtro"
+                           value="rustica">
+                    Rústica
+                </label>
 
-<p id="valorPreco">
-Até R$500
-</p>
+                <label class="flex items-center gap-3 text-gray-300 cursor-pointer">
+                    <input type="checkbox"
+                           class="accent-white filtro"
+                           value="moderna">
+                    Moderna
+                </label>
+
+            </div>
+        </div>
+
+        <div>
+
+            <h3 class="text-gray-400 mb-4 text-sm tracking-widest">
+                PREÇO MÁXIMO
+            </h3>
+
+            <input type="range"
+                   min="1000"
+                   max="12000"
+                   value="12000"
+                   id="filtroPreco"
+                   class="w-full accent-white">
+
+            <p id="valorPreco"
+               class="mt-3 text-gray-300">
+                Até R$ 1.200,00
+            </p>
+
+        </div>
+
+    </div>
 
 </div>
 
+</aside>
+
 <!-- CONTEÚDO -->
 
-<div class="flex-1 p-6 md:p-10">
+<main class="flex-1 p-6 md:p-10">
 
 <a href="index.html"
-class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow hover:scale-105 transition mb-6 text-sm md:text-base">
+class="inline-flex items-center gap-3 bg-white px-5 py-3 rounded-full shadow-lg hover:scale-105 transition duration-300 mb-10">
 
-← Página inicial
+<i data-lucide="arrow-left" class="w-4 h-4"></i>
+
+Página inicial
 
 </a>
 
-<h1 class="text-2xl md:text-3xl mb-8">
+<div class="mb-12">
 
-<span class="text-gray-400 text-sm md:text-lg">
+<p class="tracking-[0.3em] text-gray-400 text-sm mb-3">
 CASALETI
-</span>
+</p>
 
-<br>
+<h1 class="text-4xl md:text-5xl font-light">
 
-PORTAS DE MADEIRA
+Portas de Madeira
 
 </h1>
+
+</div>
 
 <!-- PRODUTOS -->
 
 <div id="produtos"
-class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-
-<!-- PRODUTO 1 -->
-
-<div class="produto bg-white p-4 md:p-6 rounded-2xl shadow"
-data-tipo="redonda"
-data-preco="120">
-
-<img src="bolacha1.png"
-class="rounded-xl mb-4 w-full">
-
-<button onclick="abrirProduto(produtosLista[0])"
-class="bg-black text-white px-6 py-2 rounded-full w-full text-sm md:text-base">
-
-CONSULTAR
-
-</button>
+class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
 
 </div>
 
-<!-- PRODUTO 2 -->
-
-<div class="produto bg-white p-4 md:p-6 rounded-2xl shadow"
-data-tipo="oval"
-data-preco="180">
-
-<img src="bolacha2.png"
-class="rounded-xl mb-4 w-full">
-
-<button onclick="abrirProduto(produtosLista[1])"
-class="bg-black text-white px-6 py-2 rounded-full w-full">
-
-CONSULTAR
-
-</button>
+</main>
 
 </div>
 
-<!-- PRODUTO 3 -->
-
-<div class="produto bg-white p-4 md:p-6 rounded-2xl shadow"
-data-tipo="rustica"
-data-preco="250">
-
-<img src="bolacha3.png"
-class="rounded-xl mb-4 w-full">
-
-<button onclick="abrirProduto(produtosLista[2])"
-class="bg-black text-white px-6 py-2 rounded-full w-full">
-
-CONSULTAR
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- MODAL PRODUTO -->
+<!-- MODAL -->
 
 <div id="modal"
-class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4">
+class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4 backdrop-blur-sm">
 
-<div class="bg-white rounded-2xl p-6 md:p-8 max-w-4xl w-full relative">
+<div class="bg-white rounded-[36px] p-8 md:p-10 max-w-2xl w-full relative shadow-2xl">
 
 <button onclick="fecharModal()"
-class="absolute top-4 right-4 text-xl">
+class="absolute top-5 right-5 w-11 h-11 rounded-full bg-black text-white flex items-center justify-center">
 
-✕
+<i data-lucide="x" class="w-5 h-5"></i>
 
 </button>
 
-<div class="grid md:grid-cols-2 gap-6 md:gap-8">
-
 <div>
 
-<img id="imgPrincipal"
-class="rounded-xl mb-4 w-full">
-
-<div id="miniaturas"
-class="flex gap-2"></div>
-
-</div>
-
-<div>
+<p class="tracking-[0.25em] text-gray-400 text-sm mb-3">
+CASALETI
+</p>
 
 <h2 id="modalTitulo"
-class="text-xl md:text-2xl mb-4"></h2>
+class="text-4xl font-light mb-4"></h2>
 
 <p id="modalPreco"
-class="text-lg md:text-xl font-semibold mb-2"></p>
+class="text-2xl mb-3"></p>
 
 <p id="modalDim"
-class="text-gray-500 mb-4"></p>
+class="text-gray-500 mb-6"></p>
 
 <p id="modalDesc"
-class="mb-6 text-sm md:text-base"></p>
+class="text-gray-600 leading-relaxed mb-8"></p>
+
+<div class="space-y-4">
 
 <button id="btnWhats"
-class="bg-green-600 text-white px-6 py-3 rounded-full w-full mb-3">
+class="bg-black text-white py-4 rounded-2xl w-full hover:bg-neutral-800 transition">
 
-WhatsApp
+Falar no WhatsApp
 
 </button>
 
 <button onclick="addCarrinho()"
-class="bg-black text-white px-6 py-3 rounded-full w-full">
+class="border border-black py-4 rounded-2xl w-full hover:bg-black hover:text-white transition">
 
 Adicionar ao carrinho
 
@@ -245,38 +237,47 @@ Adicionar ao carrinho
 <!-- OVERLAY -->
 
 <div id="overlayCarrinho"
-class="fixed inset-0 bg-black/50 hidden z-40"
-onclick="fecharCarrinho()">
-</div>
+class="fixed inset-0 bg-black/50 hidden z-40 backdrop-blur-sm"
+onclick="fecharCarrinho()"></div>
 
-<!-- CARRINHO LATERAL -->
+<!-- DRAWER -->
 
 <div id="carrinhoDrawer"
-class="fixed top-0 right-0 w-full sm:w-[350px] h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 flex flex-col">
+class="fixed top-0 right-0 w-full sm:w-[380px] h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 flex flex-col">
 
 <div class="p-6 border-b flex justify-between items-center">
 
-<h2 class="text-lg font-semibold">
+<h2 class="text-2xl font-light">
+
 Seu carrinho
+
 </h2>
 
 <button onclick="fecharCarrinho()">
-✕
+
+<i data-lucide="x" class="w-5 h-5"></i>
+
 </button>
 
 </div>
 
 <div id="listaCarrinho"
-class="flex-1 overflow-y-auto p-6 space-y-4">
-
-</div>
+class="flex-1 overflow-y-auto p-6 space-y-4"></div>
 
 <div class="p-6 border-t">
+    <p class="text-lg mb-5">
+
+Total:
+<span id="totalCarrinho" class="font-semibold">
+R$0.00
+</span>
+
+</p>
 
 <button onclick="finalizarWhats()"
-class="bg-green-600 text-white w-full py-3 rounded-full">
+class="bg-black text-white w-full py-4 rounded-2xl hover:bg-neutral-800 transition">
 
-Finalizar pelo WhatsApp
+Finalizar no WhatsApp
 
 </button>
 
@@ -291,88 +292,187 @@ Finalizar pelo WhatsApp
 const produtosLista=[
 
 {
-nome:"Bolacha Redonda Pequena",
-preco:"R$120",
-dim:"20cm",
-desc:"Bolacha artesanal em madeira maciça.",
-fotos:["bolacha1.png","bolacha1b.png","bolacha1c.png"]
+nome:"Porta Pivotante Premium",
+preco:"R$3.500,00",
+valor:3500,
+tipo:"pivotante",
+img:"portas.png",
+dim:"*Consultar dimensões",
+desc:"Porta pivotante em madeira natural com acabamento sofisticado."
 },
 
 {
-nome:"Bolacha Oval Média",
-preco:"R$180",
-dim:"30cm",
-desc:"Modelo oval com acabamento rústico.",
-fotos:["bolacha2.png","bolacha2b.png","bolacha2c.png"]
+nome:"Porta Rústica Artesanal",
+preco:"R$3.200,00",
+valor:3200,
+tipo:"rustica",
+img:"porta/portamadeira.png",
+dim:"*Consultar dimensões",
+desc:"Modelo rústico feito artesanalmente em madeira maciça."
 },
 
 {
-nome:"Bolacha Rústica Grande",
-preco:"R$250",
-dim:"40cm",
-desc:"Peça robusta com madeira natural.",
-fotos:["bolacha3.png","bolacha3b.png","bolacha3c.png"]
-}
+nome:"Porta Moderna Minimalista",
+preco:"R$3.900,00",
+valor:3900,
+tipo:"moderna",
+img:"porta/portamadeira2.png",
+dim:"*Consultar dimensões",
+desc:"Design contemporâneo com linhas minimalistas elegantes."
+},
+
+{
+nome:"Porta Colonial Floral",
+preco:"R$2.000,00",
+valor:2000,
+tipo:"rustica",
+img:"porta/porta4.png",
+dim:"2,50m x 1,20m",
+desc:"Fabricada em madeira maciça, combina resistência, durabilidade e sofisticação, sendo ideal para projetos residenciais, comerciais ou de restauração de ambientes históricos."
+},
+
 
 ]
+
+/* GERAR PRODUTOS */
+
+function renderProdutos(lista){
+
+const container=document.getElementById("produtos")
+
+container.innerHTML=""
+
+lista.forEach((prod,index)=>{
+
+container.innerHTML+=`
+
+<div class="produto bg-white rounded-[30px] overflow-hidden shadow-lg hover:-translate-y-2 transition duration-500"
+data-tipo="${prod.tipo}"
+data-preco="${prod.valor}">
+
+<div class="overflow-hidden">
+
+<img src="${prod.img}"
+class="w-full h-[320px] object-cover hover:scale-110 transition duration-700">
+
+</div>
+
+<div class="p-6">
+
+<h3 class="text-xl mb-2">
+${prod.nome}
+</h3>
+
+<p class="text-gray-400 mb-6">
+${prod.preco}
+</p>
+
+<button onclick="abrirProduto(produtosLista[${index}])"
+class="bg-black text-white w-full py-4 rounded-2xl hover:bg-neutral-800 transition">
+
+Consultar
+
+</button>
+
+</div>
+
+</div>
+
+`
+
+})
+
+}
+let produtoAtual=null
 
 /* MODAL */
 
 function abrirProduto(prod){
 
+produtoAtual=prod
+
 document.getElementById("modalTitulo").innerText=prod.nome
+
 document.getElementById("modalPreco").innerText=prod.preco
-document.getElementById("modalDim").innerText="Dimensão: "+prod.dim
+
+document.getElementById("modalDim").innerText=`Dimensão: ${prod.dim}`
+
 document.getElementById("modalDesc").innerText=prod.desc
 
-document.getElementById("imgPrincipal").src=prod.fotos[0]
+document.getElementById("btnWhats").onclick=function(){
 
-let mini=document.getElementById("miniaturas")
-mini.innerHTML=""
+window.open(
+`https://wa.me/5516999924544?text=Olá! Tenho interesse no produto: ${prod.nome}`
+)
 
-prod.fotos.forEach(f=>{
-let img=document.createElement("img")
-img.src=f
-img.className="w-14 h-14 rounded-lg cursor-pointer border"
-img.onclick=()=>document.getElementById("imgPrincipal").src=f
-mini.appendChild(img)
-})
+}
 
-document.getElementById("modal")
+document
+.getElementById("modal")
 .classList.remove("hidden")
 
-document.getElementById("modal")
+document
+.getElementById("modal")
 .classList.add("flex")
 
 }
 
+/* FECHAR MODAL */
+
 function fecharModal(){
-document.getElementById("modal").classList.add("hidden")
+
+document
+.getElementById("modal")
+.classList.add("hidden")
+
+document
+.getElementById("modal")
+.classList.remove("flex")
+
 }
 
-/* CARRINHO */
+/* STORAGE */
 
 function getCarrinho(){
-return JSON.parse(localStorage.getItem("carrinho"))||[]
+
+return JSON.parse(localStorage.getItem("carrinho")) || []
+
 }
 
-function salvarCarrinho(c){
-localStorage.setItem("carrinho",JSON.stringify(c))
+function salvarCarrinho(carrinho){
+
+localStorage.setItem(
+"carrinho",
+JSON.stringify(carrinho)
+)
+
 atualizarContador()
+
 mostrarCarrinho()
+
 }
+
+/* ADD CARRINHO */
 
 function addCarrinho(){
+
+if(!produtoAtual) return
 
 let carrinho=getCarrinho()
 
 carrinho.push({
-nome:document.getElementById("modalTitulo").innerText
+
+nome:produtoAtual.nome,
+
+preco:produtoAtual.valor,
+
+img:produtoAtual.img
+
 })
 
 salvarCarrinho(carrinho)
 
-alert("Produto adicionado!")
+fecharModal()
 
 }
 
@@ -380,10 +480,12 @@ alert("Produto adicionado!")
 
 function abrirCarrinho(){
 
-document.getElementById("overlayCarrinho")
+document
+.getElementById("overlayCarrinho")
 .classList.remove("hidden")
 
-document.getElementById("carrinhoDrawer")
+document
+.getElementById("carrinhoDrawer")
 .style.transform="translateX(0)"
 
 mostrarCarrinho()
@@ -392,15 +494,17 @@ mostrarCarrinho()
 
 function fecharCarrinho(){
 
-document.getElementById("overlayCarrinho")
+document
+.getElementById("overlayCarrinho")
 .classList.add("hidden")
 
-document.getElementById("carrinhoDrawer")
+document
+.getElementById("carrinhoDrawer")
 .style.transform="translateX(100%)"
 
 }
 
-/* LISTA */
+/* MOSTRAR */
 
 function mostrarCarrinho(){
 
@@ -410,16 +514,47 @@ let carrinho=getCarrinho()
 
 lista.innerHTML=""
 
+let total=0
+
+if(carrinho.length===0){
+
+lista.innerHTML=`
+
+<div class="text-center text-gray-400 mt-10">
+
+Seu carrinho está vazio
+
+</div>
+
+`
+
+}
+
 carrinho.forEach((prod,i)=>{
+
+total+=Number(prod.preco)
 
 lista.innerHTML+=`
 
-<div class="border rounded-xl p-4 flex justify-between items-center">
+<div class="border border-black/10 rounded-2xl p-4 flex gap-4 items-center">
 
-<span>${prod.nome}</span>
+<img src="${prod.img}"
+class="w-16 h-16 rounded-xl object-cover">
+
+<div class="flex-1">
+
+<p class="text-sm">
+${prod.nome}
+</p>
+
+<p class="font-semibold">
+R$${Number(prod.preco).toFixed(2)}
+</p>
+
+</div>
 
 <button onclick="removerItem(${i})"
-class="text-red-500">
+class="text-red-500 text-lg">
 
 ✕
 
@@ -449,7 +584,8 @@ salvarCarrinho(carrinho)
 
 function atualizarContador(){
 
-document.getElementById("contadorCarrinho")
+document
+.getElementById("contadorCarrinho")
 .innerText=getCarrinho().length
 
 }
@@ -460,40 +596,78 @@ function finalizarWhats(){
 
 let carrinho=getCarrinho()
 
-let texto="Olá! Quero estes produtos:%0A"
+if(carrinho.length===0){
+
+alert("Seu carrinho está vazio!")
+
+return
+
+}
+
+let texto="Olá! Tenho interesse nestes produtos:%0A%0A"
 
 carrinho.forEach(p=>{
-texto+=`- ${p.nome}%0A`
+
+texto+=`- ${p.nome} (R$${Number(p.preco).toFixed(2)})%0A`
+
 })
 
 window.open(
-`https://wa.me/5516999999999?text=${texto}`
+`https://wa.me/5516999924544?text=${texto}`
 )
 
 }
 
-/* FILTRO PREÇO */
+/* FILTROS */
 
-document.getElementById("filtroPreco")
-.addEventListener("input",function(){
+const filtros=document.querySelectorAll(".filtro")
 
-let val=this.value
+const filtroPreco=document.getElementById("filtroPreco")
+
+function aplicarFiltros(){
+
+const tiposSelecionados=[...filtros]
+.filter(f=>f.checked)
+.map(f=>f.value)
+
+const precoMax=parseInt(filtroPreco.value)
 
 document.getElementById("valorPreco")
-.innerText=`Até R$${val}`
+.innerText=`Até R$${precoMax}`
 
 document.querySelectorAll(".produto")
-.forEach(p=>{
+.forEach(prod=>{
 
-let preco=parseInt(p.dataset.preco)
+const tipo=prod.dataset.tipo
+const preco=parseInt(prod.dataset.preco)
 
-p.style.display=preco<=val?"block":"none"
+const tipoOk=
+tiposSelecionados.length===0 ||
+tiposSelecionados.includes(tipo)
+
+const precoOk=preco<=precoMax
+
+prod.style.display=(tipoOk && precoOk)
+? "block"
+: "none"
 
 })
 
+}
+
+filtros.forEach(f=>{
+
+f.addEventListener("change",aplicarFiltros)
+
 })
+
+filtroPreco.addEventListener("input",aplicarFiltros)
 
 /* INIT */
+
+renderProdutos(produtosLista)
+
+lucide.createIcons()
 
 atualizarContador()
 

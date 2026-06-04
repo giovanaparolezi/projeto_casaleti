@@ -5,27 +5,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bolachas de Madeira - Casaleti</title>
+<title>Mesas e Suportes - Casaleti</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-
 <script src="https://unpkg.com/lucide@latest"></script>
 
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
-body{
-font-family:'Josefin Sans', sans-serif;
-background:#efefef;
-overflow-x:hidden;
-}
+<style>
 
 html{
 scroll-behavior:smooth;
 }
 
-/* scrollbar */
+body{
+font-family:'Josefin Sans',sans-serif;
+background:#f3f3f3;
+overflow-x:hidden;
+}
 
 ::-webkit-scrollbar{
 width:8px;
@@ -47,7 +45,7 @@ border-radius:999px;
 <div onclick="abrirCarrinho()"
 class="fixed top-5 right-5 z-50 cursor-pointer">
 
-<div class="relative bg-black text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-105 transition duration-300">
+<div class="relative bg-black text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-105 transition">
 
 <i data-lucide="shopping-bag" class="w-5 h-5"></i>
 
@@ -78,8 +76,6 @@ Filtrar produtos
 
 </h2>
 
-<!-- FILTROS -->
-
 <div class="space-y-8">
 
 <div>
@@ -90,16 +86,13 @@ TIPO
 
 <div class="space-y-3">
 
-
-
-
 <label class="flex items-center gap-3 text-gray-300 cursor-pointer">
 
 <input type="checkbox"
 class="accent-white filtro"
-value="decorativa">
+value="suporte">
 
-Decorativa
+Suportes
 
 </label>
 
@@ -107,9 +100,39 @@ Decorativa
 
 <input type="checkbox"
 class="accent-white filtro"
-value="artesanato">
+value="centro">
 
-Artesanato
+Mesa de Centro
+
+</label>
+
+<label class="flex items-center gap-3 text-gray-300 cursor-pointer">
+
+<input type="checkbox"
+class="accent-white filtro"
+value="aparador">
+
+Aparador
+
+</label>
+
+<label class="flex items-center gap-3 text-gray-300 cursor-pointer">
+
+<input type="checkbox"
+class="accent-white filtro"
+value="industrial">
+
+Industrial
+
+</label>
+
+<label class="flex items-center gap-3 text-gray-300 cursor-pointer">
+
+<input type="checkbox"
+class="accent-white filtro"
+value="escada">
+
+Escadas
 
 </label>
 
@@ -125,15 +148,15 @@ PREÇO MÁXIMO
 
 <input type="range"
 min="100"
-max="1500"
-value="1500"
+max="5000"
+value="5000"
 id="filtroPreco"
 class="w-full accent-white">
 
 <p id="valorPreco"
 class="mt-3 text-gray-300">
 
-Até R$300
+Até R$5000
 
 </p>
 
@@ -148,7 +171,7 @@ Até R$300
 <main class="flex-1 p-6 md:p-10">
 
 <a href="index.html"
-class="inline-flex items-center gap-3 bg-white px-5 py-3 rounded-full shadow-lg hover:scale-105 transition duration-300 mb-10">
+class="inline-flex items-center gap-3 bg-white px-5 py-3 rounded-full shadow-lg hover:scale-105 transition mb-10">
 
 <i data-lucide="arrow-left" class="w-4 h-4"></i>
 
@@ -164,7 +187,7 @@ CASALETI
 
 <h1 class="text-4xl md:text-5xl font-light">
 
-Bolachas de Madeira e Artesanato
+Mesas e Suportes
 
 </h1>
 
@@ -184,7 +207,7 @@ class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
 <!-- MODAL -->
 
 <div id="modal"
-class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4 backdrop-blur-sm">
+class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4 backdrop-blur-sm">
 
 <div class="bg-white rounded-[36px] p-8 md:p-10 max-w-2xl w-full relative shadow-2xl">
 
@@ -243,7 +266,7 @@ Adicionar ao carrinho
 class="fixed inset-0 bg-black/50 hidden z-40 backdrop-blur-sm"
 onclick="fecharCarrinho()"></div>
 
-<!-- DRAWER -->
+<!-- CARRINHO -->
 
 <div id="carrinhoDrawer"
 class="fixed top-0 right-0 w-full sm:w-[380px] h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 flex flex-col">
@@ -251,9 +274,7 @@ class="fixed top-0 right-0 w-full sm:w-[380px] h-full bg-white shadow-2xl transl
 <div class="p-6 border-b flex justify-between items-center">
 
 <h2 class="text-2xl font-light">
-
 Seu carrinho
-
 </h2>
 
 <button onclick="fecharCarrinho()">
@@ -285,144 +306,169 @@ Finalizar no WhatsApp
 /* PRODUTOS */
 
 const produtosLista=[
-{
-nome:"Mesa de Centro com Bolacha de Madeira",
-preco:"R$250,00",
-valor:"250",
-tipo:"decorativa",
-img:"bolacha/bolachas.png",
-dim:"*Consultar dimensões",
-desc:"Podem ser usadas sozinhas como mesa de centro/lateral ou combinadas em alturas diferentes. Cada peça é totalmente única, preservando as curvas orgânicas, as fissuras naturais, os nós e os anéis de crescimento da tora original. Um verdadeiro móvel de destaque para salas de estar, varandas gourmet, recepções ou escritórios."
-},
-{
-nome:"Bolachas de Madeira",
-preco:"R$250,00",
-valor:"250",
-tipo:"decorativa",
-img:"bolacha/BOLACHAS22.png",
-dim:"*Consultar dimensões",
-desc:"Bolachas de madeira natural em diferentes tamanhos e formatos. Ideais para artesanato, decoração, centros de mesa, apoio para vasos, pintura, gravação e projetos personalizados."
-},
-{
-nome:"Bolachas de Madeira Grande",
-preco:"R$250,00",
-valor:"250",
-tipo:"decorativa",
-img:"bolacha/bolachasmaiores.png",
-dim:"*Consultar dimensões",
-desc:"Peças de madeira maciça em grandes dimensões, com formato orgânico e acabamento natural. Perfeitas para tampos de mesa, decoração rústica, painéis decorativos e projetos exclusivos de marcenaria artesanal. Cada peça é única, valorizando os desenhos e veios naturais da madeira."
-},
-
 
 {
-nome:"Pranchas de Madeira",
-preco:"R$250,00",
-valor:"250",
-tipo:"artesanato",
-img:"bolacha/pranchas.png",
-dim:"*Consultar dimensões",
-desc:"Perfeitas para a confecção de prateleiras suspensas, tampos de mesas de centro ou aparadores, cabeceiras, placas decorativas, relógios de parede rústicos, tábuas de corte gourmet ou trabalhos artísticos com resina epóxi"
+nome:"Mesa de Cabeceira",
+preco:"R$180,00",
+valor:180,
+tipo:"suporte",
+img:"mesa/mesamadeira.png",
+dim:"35cm x 40cm x 47cm",
+desc:"Mesa artesanal com acabamento sofisticado e design retrô minimalista."
 },
 
 {
-nome:"Pés de Madeira para Mesas e Bancos",
-preco:"R$250,00",
-valor:"250",
-tipo:"artesanato",
-img:"bolacha/pes.png",
+nome:"Escada Para Mezanino",
+preco:"R$4.300,00",
+valor:4300,
+tipo:"escada",
+img:"mesa/escada.png",
+dim:"4m x 0,9m",
+desc:"Escada produzida em madeira natural com estética contemporânea. Possui 15 degraus com 40cm espessura"
+},
+
+{
+nome:"Base para mesa",
+preco:"R$340,00",
+valor:340,
+tipo:"suporte",
+img:"mesa/mesa s bolacha - Copia.png",
+dim:"80cm x 70cm diâmetro",
+desc:"Ela destaca-se pela alta durabilidade e estabilidade, sendo capaz de suportar tampos pesados de madeira, mármore ou vidro"
+},
+
+{
+nome:"Mesa de Centro Quadrada Moderna",
+preco:"R$550,00",
+valor:550,
+tipo:"centro",
+img:"mesa/mesacentro.png",
+dim:"100cm x 100cm x 40cm",
+desc:"Mesa de centro quadrada com acabamento amadeirado escuro e visual minimalista. Seu design moderno e elegante proporciona praticidade e sofisticação para salas de estar, recepções, escritórios e ambientes corporativos. Uma peça versátil que harmoniza facilmente com diferentes estilos de decoração."
+},
+
+{
+nome:"Suporte Ornamental Quadrado",
+preco:"R$240,00",
+valor:240,
+tipo:"suporte",
+img:"mesa/basequadrada.png",
+dim:"45cm x 45cm x 60cm",
+desc:"Aparador artesanal perfeito para halls e salas modernas."
+},
+{
+nome:"Trava para 5 Bicicletas",
+preco:"R$580,00",
+valor:580,
+tipo:"industrial",
+img:"mesa/bicicleta.png",
 dim:"*Consultar dimensões",
-desc:"Pés de madeira torneados, ideais para fabricação e restauração de mesas, banquetas e móveis artesanais. Produzidos em madeira natural, oferecem resistência, beleza e acabamento rústico para diversos projetos."
+desc:"Bicicletário metálico desenvolvido para organização e estacionamento seguro de bicicletas em condomínios, empresas, escolas, comércios, praças e áreas públicas. Fabricado em aço resistente, possui estrutura reforçada com capacidade para acomodar até 5 bicicletas de forma prática e organizada, otimizando o espaço disponível."
+},
+{
+nome:"Suporte Orgânico",
+preco:"R$240,00",
+valor:240,
+tipo:"suporte",
+img:"mesa/mesaornamental.png",
+dim:"70cm x 40cm diâmetro",
+desc:"Suporte decorativo produzido em ferro e design elegante de linhas curvas. Ideal para acomodar tampos de mesa e madeira. Seu estilo clássico agrega charme e sofisticação a salas, halls de entrada, varandas cobertas, eventos e decorações temáticas."
+},
+
+{
+nome:"Aparador Multifuncional em Madeira e Ferro",
+preco:"R$1300,00",
+valor:1300,
+tipo:"aparador",
+img:"mesa/suporte gaveta.png",
+dim:"*Consultar dimensões",
+desc:"Móvel funcional com estrutura reforçada e gavetas para organização. Une praticidade e estilo, sendo ideal para salas, escritórios, cozinhas ou áreas comerciais."
+},
+
+{
+nome:"Balcão com Prateleiras",
+preco:"700,00",
+valor:700,
+tipo:"aparador",
+img:"mesa/balcao.png",
+dim:"2.60m x 0.65m | Balcão: 85cm x 65cm",
+desc:"Balcão artesanal produzido em madeira maciça, combinando funcionalidade e elegância. Seu design robusto valoriza ambientes residenciais e comerciais, oferecendo amplo espaço de armazenamento e um visual atemporal que se adapta a diferentes estilos de decoração."
 },
 
 
-
 {
-nome:"Suporte para vaso de flor",
-preco:"R$250,00",
-valor:"250",
-tipo:"decorativa",
-img:"bolacha/suporte.png",
-dim:"*Consultar dimensões",
-desc:"Suporte elegante com estrutura metálica e tampo em madeira natural. Perfeito para destacar vasos, flores e objetos decorativos em qualquer ambiente."
+nome:"Torre Expositora de Chocolates + Caixa Protetora",
+preco:"700,00",
+valor:700,
+tipo:"industrial",
+img:"mesa/torre.png",
+dim:"2.60m x 0.65m | Balcão: 85cm x 65cm",
+desc:"Torre Expositora de Chocolates em Aço Inox + Caixa Protetora em Madeira, ideal para compor espaços gourmet, eventos corporativos, feiras e ativações de marca. Design moderno, elegante e funcional, proporcionando destaque aos produtos expostos e valorizando a apresentação do ambiente."
 },
 
 
 {
-nome:"Mesa de Centro",
+nome:"Suporte Decorativo",
+preco:"R$680,00",
+valor:680,
+tipo:"industrial",
+img:"mesa/suporte branco.png",
+dim:"*Consultar dimensões e tamanhos",
+desc:"Peças decorativas em ferro versáteis para exposição de vasos, esculturas e objetos ornamentais. Seu acabamento elegante valoriza ambientes internos e externos com sofisticação."
+},
+
+{
+nome:"Estrutura Metálica para mesa",
+preco:"R$380,00",
+valor:380,
+tipo:"suporte",
+img:"mesa/mesas.png",
+dim:"57cm x 30cm diâmetro",
+desc:"Suporte com uma estrutura harmoniosa, criando uma peça sofisticada e versátil. Seu design moderno e leve é perfeito para salas, halls de entrada e ambientes decorativos. Sendo capaz de suportar tampos pesados de madeira, mármore ou vidro"
+},
+
+{
+nome:"Suporte Artesanal para Rede",
+preco:"R$3.500,00",
+valor:3500,
+tipo:"industrial",
+img:"mesa/rede.png",
+dim:"1,50m",
+desc:"Estrutura resistente desenvolvida para proporcionar conforto e segurança. Fabricada com materiais de alta durabilidade, é ideal para áreas externas, varandas, jardins e espaços de lazer. Suporta até 180kg."
+},
+
+{
+nome:"Bases de Máquina de Costura Vintage",
 preco:"R$280,00",
-valor:"280",
-tipo:"decorativa",
-img:"bolacha/bolachapecolorido.png",
-dim:"de 20cm à 80cm",
-desc:"Mesa artesanal produzida com bolacha de madeira natural e pés de ferro, unindo o charme rústico da madeira à alegria das cores. Ideal para decoração de salas, varandas, áreas gourmet, jardins e espaços infantis. Cada peça possui características únicas da madeira, tornando-a exclusiva e cheia de personalidade."
+valor:280,
+tipo:"industrial",
+img:"mesa/maquinacostura.jpg",
+dim:"*Consultar dimensões e modelos",
+desc:"Leve a autenticidade e o charme do estilo vintage para o seu ambiente com estas bases originais de máquinas de costura antigas (modelos Elgin e Vigorelli). Feitas em ferro fundido pesado e altamente resistente, essas peças carregam história e são a escolha perfeita para quem busca exclusividade em projetos de decoração."
 },
 
 
 {
-nome:"Mesa Rústica com Pés Coloridos",
-preco:"R$280,00",
-valor:"280",
-tipo:"decorativa",
-img:"bolacha/mesacolor.png",
-dim:"de 20cm à 80cm",
-desc:"Mesa artesanal produzida com bolacha de madeira natural e pés coloridos, unindo o charme rústico da madeira à alegria das cores. Ideal para decoração de salas, varandas, áreas gourmet, jardins e espaços infantis. Cada peça possui características únicas da madeira, tornando-a exclusiva e cheia de personalidade.."
-},
-
-
-
-{
-nome:"Bandeja Galvanizada Multiuso",
-preco:"R$70,00",
-valor:70,
-tipo:"artesanato",
-img:"bolacha/galvanizada.png",
-dim:"80cm x 54cm",
-desc:"Produzida em chapa galvanizada de alta durabilidade. Indicada para apoio de vasos, organização de mudas e diversas aplicações em floriculturas, jardins e viveiros."
-},
-
-{
-nome:"Balde Quadrado para Cultivo",
-preco:"R$250,00",
-valor:250,
-tipo:"artesanato",
-img:"bolacha/suportevaso.png",
-dim:"*Consultar dimensões",
-desc:"Balde plástico resistente, ideal para o desenvolvimento saudável de mudas, flores e pequenas plantas. Possui aberturas para melhor drenagem e ventilação das raízes. Capacidade: 20L."
-},
-
-{
-nome:"Porta Vaso para 12 mudas",
-preco:"R$25,00",
-valor:25,
-tipo:"artesanato",
-img:"bolacha/portavaso.png",
-dim:"*Consultar dimensões",
-desc:"Ideal para organização e transporte de mudas. Possui capacidade para 12 vasinhos, oferecendo praticidade para viveiros, floriculturas e produtores. Fabricado em material resistente e reutilizável."
-},
-
-{
-nome:"Roda Carroça",
-preco:"R$950,00",
-valor:950,
-tipo:"artesanato",
-img:"bolacha/roda.jpg",
-dim:"*Consultar dimensões",
-desc:"Peça original em madeira maciça, utilizada tradicionalmente em carroças ou carros de boi."
+nome:"Estrutura Metálica Decorativa",
+preco:"R$240,00",
+valor:240,
+tipo:"industrial",
+img:"mesa/suporte ornamental.png",
+dim:"*Consultar dimensões e tamanhos",
+desc:"Estrutura metálica decorativa com design elegante de linhas curvas. Seu estilo clássico agrega charme e sofisticação a salas, halls de entrada, varandas cobertas, eventos e decorações temáticas."
 }
+
+
 
 ]
 
 /* GERAR PRODUTOS */
 
-function renderProdutos(lista){
+const produtosContainer=document.getElementById("produtos")
 
-const container=document.getElementById("produtos")
+produtosLista.forEach((prod,index)=>{
 
-container.innerHTML=""
-
-lista.forEach((prod,index)=>{
-
-container.innerHTML+=`
+produtosContainer.innerHTML+=`
 
 <div class="produto bg-white rounded-[30px] overflow-hidden shadow-lg hover:-translate-y-2 transition duration-500"
 data-tipo="${prod.tipo}"
@@ -459,8 +505,6 @@ Consultar
 `
 
 })
-
-}
 
 /* MODAL */
 
@@ -695,55 +739,66 @@ window.open(
 
 }
 
-
 /* FILTROS */
 
 const filtros=document.querySelectorAll(".filtro")
 
-const filtroPreco=document.getElementById("filtroPreco")
+filtros.forEach(f=>{
 
-function aplicarFiltros(){
+f.addEventListener("change",filtrarProdutos)
 
-const tiposSelecionados=[...filtros]
-.filter(f=>f.checked)
-.map(f=>f.value)
+})
 
-const precoMax=parseInt(filtroPreco.value)
+document.getElementById("filtroPreco")
+.addEventListener("input",filtrarProdutos)
+
+function filtrarProdutos(){
+
+let precoMax=parseInt(
+document.getElementById("filtroPreco").value
+)
 
 document.getElementById("valorPreco")
 .innerText=`Até R$${precoMax}`
 
+let tiposSelecionados=[]
+
+filtros.forEach(f=>{
+
+if(f.checked){
+tiposSelecionados.push(f.value)
+}
+
+})
+
 document.querySelectorAll(".produto")
 .forEach(prod=>{
 
-const tipo=prod.dataset.tipo
-const preco=parseInt(prod.dataset.preco)
+let preco=parseInt(prod.dataset.preco)
 
-const tipoOk=
+let tipo=prod.dataset.tipo
+
+let passaPreco=preco<=precoMax
+
+let passaTipo=
 tiposSelecionados.length===0 ||
 tiposSelecionados.includes(tipo)
 
-const precoOk=preco<=precoMax
+if(passaPreco && passaTipo){
 
-prod.style.display=(tipoOk && precoOk)
-? "block"
-: "none"
+prod.style.display="block"
+
+}else{
+
+prod.style.display="none"
+
+}
 
 })
 
 }
 
-filtros.forEach(f=>{
-
-f.addEventListener("change",aplicarFiltros)
-
-})
-
-filtroPreco.addEventListener("input",aplicarFiltros)
-
 /* INIT */
-
-renderProdutos(produtosLista)
 
 lucide.createIcons()
 
