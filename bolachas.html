@@ -36,6 +36,57 @@ background:#111;
 border-radius:999px;
 }
 
+/* RESPONSIVO: 2 produtos por linha no mobile */
+@media (max-width: 640px) {
+    .grid-produtos {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+    
+    .grid-produtos .produto {
+        width: 100% !important;
+    }
+    
+    .grid-produtos .produto img {
+        height: 180px !important;
+    }
+    
+    .grid-produtos .produto .p-6 {
+        padding: 0.75rem !important;
+    }
+    
+    .grid-produtos .produto h3 {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .grid-produtos .produto .text-gray-400 {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .grid-produtos .produto button {
+        padding: 0.5rem !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* Ajuste para telas muito pequenas */
+@media (max-width: 480px) {
+    .grid-produtos {
+        gap: 0.75rem !important;
+    }
+    
+    .grid-produtos .produto img {
+        height: 150px !important;
+    }
+    
+    .grid-produtos .produto h3 {
+        font-size: 0.7rem !important;
+    }
+}
+
 </style>
 
 </head>
@@ -90,9 +141,6 @@ TIPO
 
 <div class="space-y-3">
 
-
-
-
 <label class="flex items-center gap-3 text-gray-300 cursor-pointer">
 
 <input type="checkbox"
@@ -133,7 +181,7 @@ class="w-full accent-white">
 <p id="valorPreco"
 class="mt-3 text-gray-300">
 
-Até R$300
+Até R$1500
 
 </p>
 
@@ -170,10 +218,9 @@ Bolachas de Madeira e Artesanato
 
 </div>
 
-<!-- PRODUTOS -->
-
+<!-- PRODUTOS - grid responsivo: 1 coluna no desktop, 2 colunas no mobile -->
 <div id="produtos"
-class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+class="grid grid-cols-1 xl:grid-cols-3 gap-8 grid-produtos">
 
 </div>
 

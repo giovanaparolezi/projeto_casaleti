@@ -34,6 +34,63 @@ background:#111;
 border-radius:999px;
 }
 
+/* RESPONSIVO: 2 produtos por linha no mobile */
+@media (max-width: 640px) {
+    .grid-produtos {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+    
+    .grid-produtos .produto {
+        width: 100% !important;
+    }
+    
+    .grid-produtos .produto img {
+        height: 180px !important;
+    }
+    
+    .grid-produtos .produto .p-6 {
+        padding: 0.75rem !important;
+    }
+    
+    .grid-produtos .produto h3 {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.25rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .grid-produtos .produto .text-gray-400 {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .grid-produtos .produto button {
+        padding: 0.5rem !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* Ajuste para telas muito pequenas */
+@media (max-width: 480px) {
+    .grid-produtos {
+        gap: 0.75rem !important;
+    }
+    
+    .grid-produtos .produto img {
+        height: 140px !important;
+    }
+    
+    .grid-produtos .produto h3 {
+        font-size: 0.65rem !important;
+    }
+    
+    .grid-produtos .produto button {
+        font-size: 0.6rem !important;
+        padding: 0.4rem !important;
+    }
+}
+
 </style>
 
 </head>
@@ -193,10 +250,9 @@ Mesas e Suportes
 
 </div>
 
-<!-- PRODUTOS -->
-
+<!-- PRODUTOS - grid responsivo: 2 colunas no mobile -->
 <div id="produtos"
-class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+class="grid grid-cols-1 xl:grid-cols-3 gap-8 grid-produtos">
 
 </div>
 
@@ -520,6 +576,8 @@ Consultar
 `
 
 })
+
+let produtoAtual = null
 
 /* MODAL */
 

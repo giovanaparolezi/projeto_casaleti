@@ -9,7 +9,6 @@
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
-/* PROJETOS DESTAQUE */
 .sliderProjetos {
     overflow: hidden;
     position: relative;
@@ -29,6 +28,11 @@
     overflow: hidden;
     border-radius: 28px;
     box-shadow: 0 25px 60px rgba(0,0,0,.12);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.cardProjeto:hover {
+    transform: translateY(-5px);
 }
 .cardProjeto img {
     width: 100%;
@@ -101,6 +105,9 @@ body {
 }
 #menuMobile {
     transition: .3s;
+}
+.cardCategoria {
+    cursor: pointer;
 }
 .cardCategoria img {
     transition: .6s;
@@ -192,6 +199,42 @@ body {
         font-size: 18px;
     }
 }
+.btn-ver-chamativo {
+    background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 6px 18px;
+    border-radius: 60px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    color: #1a1a1a;
+}
+.btn-ver-chamativo:hover {
+    transform: scale(1.05);
+    background: white;
+    gap: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+.btn-ver-chamativo i {
+    transition: transform 0.2s ease;
+}
+.btn-ver-chamativo:hover i {
+    transform: translateX(4px);
+}
+@keyframes softPulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+.btn-ver-chamativo {
+    animation: softPulse 2s infinite;
+}
 </style>
 </head>
 <body>
@@ -206,14 +249,9 @@ body {
     <header class="relative z-50 flex justify-center pt-5 px-4">
         <nav class="bg-white/95 backdrop-blur-xl w-full max-w-7xl rounded-full px-5 md:px-10 py-4 shadow-2xl flex items-center justify-between">
           <div class="flex flex-col">
-    <h1 class="tracking-[0.25em] text-sm md:text-lg font-semibold">
-        CASALETI
-    </h1>
-
-    <h2 class="text-xs md:text-sm text-gray-600">
-        Artesanato e Demolições
-    </h2>
-</div>
+            <h1 class="tracking-[0.25em] text-sm md:text-lg font-semibold">CASALETI</h1>
+            <h2 class="text-xs md:text-sm text-gray-600">Artesanato e Demolições</h2>
+          </div>
             <ul class="hidden md:flex items-center gap-10 text-gray-700">
                 <li><a href="index.html" class="hover:text-black transition">Início</a></li>
                 <li><a href="#categorias" class="hover:text-black transition">Peças</a></li>
@@ -267,49 +305,47 @@ body {
         
         <div class="sliderProjetos">
             <div class="sliderTrack" id="sliderTrack">
-                <div class="cardProjeto">
+                <div class="cardProjeto" onclick="window.location.href='mesas.html'">
                     <img src="projetos/balcao.png" alt="Balcão">
-            
+                    <img src="projetos/cacaushow.png" class="logoCliente" alt="Cacau Show" onerror="this.style.display='none'">
                     <div class="infoProjeto">
                         <h3 class="text-2xl mb-2">Balcão Rústico</h3>
                         <p class="text-sm tracking-wider">Madeira maciça • Peça única</p>
                     </div>
                 </div>
-                <div class="cardProjeto">
+                <div class="cardProjeto" onclick="window.location.href='mesas.html'">
                     <img src="projetos/torre.png" alt="Torre">
-                  
+                    <img src="projetos/cacaushow.png" class="logoCliente" alt="Cacau Show" onerror="this.style.display='none'">
                     <div class="infoProjeto">
                         <h3 class="text-2xl mb-2">Torre Expositiva</h3>
                         <p class="text-sm tracking-wider">Ideal para lojas ou decoração</p>
                     </div>
                 </div>
-                <div class="cardProjeto">
+                <div class="cardProjeto" onclick="window.location.href='mesas.html'">
                     <img src="projetos/escada.png" alt="Escada">
-             
                     <div class="infoProjeto">
                         <h3 class="text-2xl mb-2">Escada Decorativa</h3>
                         <p class="text-sm tracking-wider">Peça rústica e charmosa</p>
                     </div>
                 </div>
-                <div class="cardProjeto">
+                <div class="cardProjeto" onclick="window.location.href='bolachas.html'">
                     <img src="projetos/bolachas.png" alt="Bolachas">
-               
                     <div class="infoProjeto">
                         <h3 class="text-2xl mb-2">Mesa com Bolacha</h3>
                         <p class="text-sm tracking-wider">Madeira natural • Design único</p>
                     </div>
                 </div>
-                <div class="cardProjeto">
+                <div class="cardProjeto" onclick="window.location.href='mesas.html'">
                     <img src="projetos/balcao.png" alt="Balcão Industrial">
-                   
+                    <img src="projetos/cacaushow.png" class="logoCliente" alt="Cacau Show" onerror="this.style.display='none'">
                     <div class="infoProjeto">
                         <h3 class="text-2xl mb-2">Balcão Industrial</h3>
                         <p class="text-sm tracking-wider">Estrutura em madeira maciça</p>
                     </div>
                 </div>
-                <div class="cardProjeto">
+                <div class="cardProjeto" onclick="window.location.href='mesas.html'">
                     <img src="projetos/torre.png" alt="Torre Expositiva">
-                  
+                    <img src="projetos/cacaushow.png" class="logoCliente" alt="Cacau Show" onerror="this.style.display='none'">
                     <div class="infoProjeto">
                         <h3 class="text-2xl mb-2">Torre Decorativa</h3>
                         <p class="text-sm tracking-wider">Peça exclusiva</p>
@@ -322,7 +358,7 @@ body {
     </div>
 </section>
 
-<!-- CATEGORIAS / PEÇAS DISPONÍVEIS -->
+<!-- CATEGORIAS / PEÇAS DISPONÍVEIS - AGORA LEVAM PARA A PÁGINA CORRETA -->
 <section id="categorias" class="bg-[#f3f3f3] py-20">
     <div class="max-w-7xl mx-auto px-6">
         <div class="mb-14 text-center">
@@ -330,44 +366,54 @@ body {
             <h2 class="text-4xl md:text-5xl font-light">Peças Disponíveis</h2>
         </div>
         <div class="grid md:grid-cols-3 gap-8">
-            <a href="bolachas.html" class="cardCategoria relative overflow-hidden rounded-[32px] shadow-2xl group">
+            <!-- Bolachas - agora clicável por inteiro -->
+            <div onclick="window.location.href='bolachas.html'" class="cardCategoria relative overflow-hidden rounded-[32px] shadow-2xl group cursor-pointer">
                 <img src="bolachas.png" class="w-full h-[320px] object-cover">
                 <div class="absolute inset-0 bg-black/35"></div>
-                <div class="absolute bottom-8 left-8 text-white">
+                <div class="absolute bottom-8 left-8 text-white z-10">
                     <h3 class="text-2xl mb-2">Bolachas de Madeira</h3>
-                    <p class="underline tracking-wider text-sm">VER PEÇAS</p>
+                    <div class="btn-ver-chamativo">
+                        <span>VER PEÇAS</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 inline"></i>
+                    </div>
                 </div>
-                <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full">Personalizáveis</div>
-            </a>
-            <a href="mesas.html" class="cardCategoria relative overflow-hidden rounded-[32px] shadow-2xl group">
+                <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full z-10">Personalizáveis</div>
+            </div>
+            <!-- Mesas - agora clicável por inteiro -->
+            <div onclick="window.location.href='mesas.html'" class="cardCategoria relative overflow-hidden rounded-[32px] shadow-2xl group cursor-pointer">
                 <img src="mesa/mesas.png" class="w-full h-[320px] object-cover">
                 <div class="absolute inset-0 bg-black/35"></div>
-                <div class="absolute bottom-8 left-8 text-white">
+                <div class="absolute bottom-8 left-8 text-white z-10">
                     <h3 class="text-2xl mb-2">Mesas e Suportes</h3>
-                    <p class="underline tracking-wider text-sm">VER PEÇAS</p>
+                    <div class="btn-ver-chamativo">
+                        <span>VER PEÇAS</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 inline"></i>
+                    </div>
                 </div>
-                <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full">Prontas</div>
-            </a>
-            <a href="portas.html" class="cardCategoria relative overflow-hidden rounded-[32px] shadow-2xl group">
+                <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full z-10">Prontas</div>
+            </div>
+            <!-- Portas - agora clicável por inteiro -->
+            <div onclick="window.location.href='portas.html'" class="cardCategoria relative overflow-hidden rounded-[32px] shadow-2xl group cursor-pointer">
                 <img src="portas.png" class="w-full h-[320px] object-cover">
                 <div class="absolute inset-0 bg-black/35"></div>
-                <div class="absolute bottom-8 left-8 text-white">
+                <div class="absolute bottom-8 left-8 text-white z-10">
                     <h3 class="text-2xl mb-2">Portas de Madeira</h3>
-                    <p class="underline tracking-wider text-sm">VER PEÇAS</p>
+                    <div class="btn-ver-chamativo">
+                        <span>VER PEÇAS</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 inline"></i>
+                    </div>
                 </div>
-                <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full">Prontas</div>
-            </a>
+                <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full z-10">Prontas</div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- CONTATO - VERSÃO VENDA -->
+<!-- CONTATO -->
 <section id="contato" class="bg-[#0c0c0c] py-20 relative overflow-hidden">
     <div class="absolute w-[400px] h-[400px] bg-white/5 rounded-full blur-[120px] -top-32 -left-32"></div>
     <div class="absolute w-[350px] h-[350px] bg-white/5 rounded-full blur-[100px] bottom-0 right-0"></div>
     <div class="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
-        
-        <!-- TEXTO - MODIFICADO PARA VENDA -->
         <div>
             <h2 class="text-white text-3xl md:text-5xl font-light leading-tight mb-6">
                 Peças únicas<br>
@@ -403,16 +449,11 @@ body {
                 Ver peças disponíveis
             </button>
         </div>
-
-        <!-- FORMULÁRIO - MODIFICADO PARA VENDA -->
         <div class="bg-white/5 border border-white/10 rounded-[32px] p-6 md:p-8 backdrop-blur-xl shadow-2xl">
-            <h3 class="text-white text-2xl md:text-3xl font-light mb-8">
-                Quero comprar uma peça
-            </h3>
+            <h3 class="text-white text-2xl md:text-3xl font-light mb-8">Quero comprar uma peça</h3>
             <div class="space-y-4">
                 <input id="nome" type="text" placeholder="Seu nome" class="inputPremium w-full p-4 rounded-2xl text-white placeholder-gray-500">
                 <input id="telefone" type="tel" placeholder="Seu WhatsApp" class="inputPremium w-full p-4 rounded-2xl text-white placeholder-gray-500">
-                
                 <select id="tipo" class="inputPremium w-full p-4 rounded-2xl text-white">
                     <option value="" disabled selected class="text-gray-400">Qual peça você tem interesse?</option>
                     <option>Bolacha de Madeira</option>
@@ -421,12 +462,7 @@ body {
                     <option>Portas</option>
                     <option>Outra peça - me conte abaixo</option>
                 </select>
-
                 <textarea id="descricao" rows="3" placeholder="Qual tamanho ou modelo você procura? (opcional)" class="inputPremium w-full p-4 rounded-2xl text-white placeholder-gray-500"></textarea>
-
-            
-        
-
                 <button onclick="enviarWhatsVenda()" class="w-full bg-white text-black py-4 rounded-2xl hover:scale-[1.02] transition shadow-xl">
                     Quero saber disponibilidade
                 </button>
@@ -441,7 +477,6 @@ body {
         <div class="grid lg:grid-cols-3 gap-14">
             <div>
                 <h2 class="text-white text-3xl tracking-[0.25em] font-light mb-6">CASALETI - Artesanato e Demolições</h2>
-               
                 <p class="text-gray-400 leading-relaxed max-w-sm">Peças artesanais exclusivas em madeira, disponíveis para venda imediata.</p>
             </div>
             <div>
@@ -470,7 +505,7 @@ body {
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-// ========== SLIDER ==========
+// SLIDER
 const track = document.getElementById('sliderTrack');
 const prevBtn = document.getElementById('btnPrevSlider');
 const nextBtn = document.getElementById('btnNextSlider');
@@ -597,12 +632,10 @@ window.addEventListener('resize', () => {
 
 setTimeout(initSlider, 100);
 
-// ========== MENU ==========
 function toggleMenu() {
     document.getElementById("menuMobile").classList.toggle("hidden");
 }
 
-// ========== WHATSAPP - VERSÃO VENDA ==========
 function abrirWhats() {
     window.open("https://wa.me/5516999924544?text=Olá! Gostaria de saber quais peças estão disponíveis para venda.");
 }
@@ -620,7 +653,7 @@ function enviarWhatsVenda() {
     
     let msg = `Olá! Meu nome é ${nome}%0A`;
     msg += `Telefone: ${tel}%0A%0A`;
-    msg += `📦 **TENHO INTERESSE EM COMPRAR:**%0A`;
+    msg += `📦 TENHO INTERESSE EM COMPRAR:%0A`;
     msg += `Peça: ${peca}%0A`;
     
     if (detalhes && detalhes !== "Qual tamanho ou modelo você procura? (opcional)") {
@@ -628,16 +661,13 @@ function enviarWhatsVenda() {
     }
     
     msg += `%0AAs peças ainda estão disponíveis?`;
-
     window.open(`https://wa.me/5516999924544?text=${msg}`);
 }
 
-// ========== CARRINHO ==========
 function getCarrinho() { return JSON.parse(localStorage.getItem("carrinho")) || []; }
 function salvarCarrinho(c) { localStorage.setItem("carrinho", JSON.stringify(c)); atualizarContador(); mostrarCarrinho(); }
 function abrirCarrinho() { document.getElementById("overlayCarrinho").classList.remove("hidden"); document.getElementById("carrinhoDrawer").style.transform = "translateX(0)"; mostrarCarrinho(); }
 function fecharCarrinho() { document.getElementById("overlayCarrinho").classList.add("hidden"); document.getElementById("carrinhoDrawer").style.transform = "translateX(100%)"; }
-
 function mostrarCarrinho() {
     let lista = document.getElementById("listaCarrinho");
     let carrinho = getCarrinho();
@@ -654,7 +684,6 @@ function mostrarCarrinho() {
     });
     document.getElementById("totalCarrinho").innerText = `R$${total.toFixed(2)}`;
 }
-
 function removerItem(i) { let carrinho = getCarrinho(); carrinho.splice(i, 1); salvarCarrinho(carrinho); }
 function atualizarContador() { document.getElementById("contadorCarrinho").innerText = getCarrinho().length; }
 function finalizarWhats() {

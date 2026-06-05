@@ -36,6 +36,57 @@ background:#111;
 border-radius:999px;
 }
 
+/* RESPONSIVO: 2 produtos por linha no mobile */
+@media (max-width: 640px) {
+    .grid-produtos {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+    
+    .grid-produtos .produto {
+        width: 100% !important;
+    }
+    
+    .grid-produtos .produto img {
+        height: 180px !important;
+    }
+    
+    .grid-produtos .produto .p-6 {
+        padding: 0.75rem !important;
+    }
+    
+    .grid-produtos .produto h3 {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .grid-produtos .produto .text-gray-400 {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .grid-produtos .produto button {
+        padding: 0.5rem !important;
+        font-size: 0.7rem !important;
+    }
+}
+
+/* Ajuste para telas muito pequenas */
+@media (max-width: 480px) {
+    .grid-produtos {
+        gap: 0.75rem !important;
+    }
+    
+    .grid-produtos .produto img {
+        height: 150px !important;
+    }
+    
+    .grid-produtos .produto h3 {
+        font-size: 0.7rem !important;
+    }
+}
+
 </style>
 
 </head>
@@ -129,7 +180,7 @@ Filtrar produtos
 
             <p id="valorPreco"
                class="mt-3 text-gray-300">
-                Até R$ 1.200,00
+                Até R$ 12.000
             </p>
 
         </div>
@@ -167,10 +218,9 @@ Portas de Madeira
 
 </div>
 
-<!-- PRODUTOS -->
-
+<!-- PRODUTOS - grid responsivo: 2 colunas no mobile -->
 <div id="produtos"
-class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+class="grid grid-cols-1 xl:grid-cols-3 gap-8 grid-produtos">
 
 </div>
 
@@ -306,7 +356,7 @@ valor:3500,
 tipo:"pivotante",
 img:"portas.png",
 dim:"*Consultar dimensões",
-desc:"Porta pivotante em madeira natural com acabamento sofisticado."
+desc:"Porta pivotante em madeira natural com acabamento sofisticado. Sistema de rotação 360°, ideal para ambientes que exigem elegância e funcionalidade. Fabricada em madeira de demolição de alta qualidade, com ferragens exclusivas e acabamento impecável."
 },
 
 {
@@ -316,7 +366,7 @@ valor:3200,
 tipo:"rustica",
 img:"porta/portamadeira.png",
 dim:"*Consultar dimensões",
-desc:"Modelo rústico feito artesanalmente em madeira maciça."
+desc:"Modelo rústico feito artesanalmente em madeira maciça de demolição. Cada peça é única, preservando marcas do tempo e veios naturais da madeira. Perfeita para projetos campestres, chácaras, sítios e decoração rústica-chique."
 },
 
 {
@@ -326,7 +376,7 @@ valor:3900,
 tipo:"moderna",
 img:"porta/portamadeira2.png",
 dim:"*Consultar dimensões",
-desc:"Design contemporâneo com linhas minimalistas elegantes."
+desc:"Design contemporâneo com linhas minimalistas elegantes. Acabamento em madeira natural com pintura na cor escolhida. Ideal para projetos modernos, apartamentos de alto padrão e escritórios."
 },
 
 {
@@ -336,9 +386,8 @@ valor:2000,
 tipo:"rustica",
 img:"porta/porta4.png",
 dim:"2,50m x 1,20m",
-desc:"Fabricada em madeira maciça, combina resistência, durabilidade e sofisticação, sendo ideal para projetos residenciais, comerciais ou de restauração de ambientes históricos."
+desc:"Fabricada em madeira maciça, combina resistência, durabilidade e sofisticação, sendo ideal para projetos residenciais, comerciais ou de restauração de ambientes históricos. Detalhes em entalhe floral que remetem ao período colonial brasileiro."
 },
-
 
 ]
 
@@ -644,7 +693,7 @@ const tiposSelecionados=[...filtros]
 const precoMax=parseInt(filtroPreco.value)
 
 document.getElementById("valorPreco")
-.innerText=`Até R$${precoMax}`
+.innerText=`Até R$ ${precoMax.toLocaleString('pt-BR')}`
 
 document.querySelectorAll(".produto")
 .forEach(prod=>{
