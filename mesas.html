@@ -91,11 +91,80 @@ border-radius:999px;
     }
 }
 
+/* MODAL DE IMAGEM EM TELA CHEIA */
+.modal-imagem {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.modal-imagem.active {
+    display: flex;
+}
+
+.modal-imagem img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.fechar-imagem {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.fechar-imagem:hover {
+    transform: scale(1.1);
+    background: #f0f0f0;
+}
+
+.fechar-imagem i {
+    width: 28px;
+    height: 28px;
+    color: black;
+}
+
+/* Estilo para as imagens dos produtos - cursor pointer */
+.produto img {
+    cursor: pointer;
+}
+
 </style>
 
 </head>
 
 <body>
+
+<!-- MODAL DE IMAGEM EM TELA CHEIA -->
+<div id="modalImagem" class="modal-imagem" onclick="fecharImagemModal()">
+    <button class="fechar-imagem" onclick="event.stopPropagation(); fecharImagemModal()">
+        <i data-lucide="x"></i>
+    </button>
+    <img id="imagemFullscreen" src="" alt="Imagem ampliada">
+</div>
 
 <!-- CARRINHO -->
 
@@ -260,8 +329,7 @@ class="grid grid-cols-1 xl:grid-cols-3 gap-8 grid-produtos">
 
 </div>
 
-<!-- MODAL -->
-
+<!-- MODAL PRODUTO -->
 <div id="modal"
 class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-4 backdrop-blur-sm">
 
@@ -469,8 +537,8 @@ desc:"Balcão artesanal produzido em madeira maciça, combinando funcionalidade 
 
 {
 nome:"Torre Expositora de Chocolates + Caixa Protetora",
-preco:"700,00",
-valor:700,
+preco:"R$1500,00,00",
+valor:1500,
 tipo:"industrial",
 img:"mesa/torre.png",
 dim:"2.60m x 0.65m | Balcão: 85cm x 65cm",
@@ -500,8 +568,8 @@ desc:"Suporte com uma estrutura harmoniosa, criando uma peça sofisticada e vers
 
 {
 nome:"Suporte Artesanal para Rede",
-preco:"R$3.500,00",
-valor:3500,
+preco:"Até 100kg: R$700,00; Até 180kg: R$1.500,00",
+valor:1500,
 tipo:"industrial",
 img:"mesa/rede.png",
 dim:"1,50m",
@@ -548,7 +616,8 @@ data-preco="${prod.valor}">
 <div class="overflow-hidden">
 
 <img src="${prod.img}"
-class="w-full h-[320px] object-cover hover:scale-110 transition duration-700">
+class="w-full h-[320px] object-cover hover:scale-110 transition duration-700"
+onclick="abrirImagemFullscreen('${prod.img}')">
 
 </div>
 
@@ -578,6 +647,33 @@ Consultar
 })
 
 let produtoAtual = null
+
+/* FUNÇÃO PARA ABRIR IMAGEM EM TELA CHEIA */
+function abrirImagemFullscreen(urlImagem) {
+    const modalImagem = document.getElementById('modalImagem');
+    const imagemFull = document.getElementById('imagemFullscreen');
+    
+    if (urlImagem && urlImagem !== '') {
+        imagemFull.src = urlImagem;
+        modalImagem.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Previne scroll da página
+    }
+}
+
+/* FUNÇÃO PARA FECHAR MODAL DE IMAGEM */
+function fecharImagemModal() {
+    const modalImagem = document.getElementById('modalImagem');
+    modalImagem.classList.remove('active');
+    document.body.style.overflow = ''; // Restaura scroll
+}
+
+/* Fechar modal de imagem com tecla ESC */
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        fecharImagemModal();
+        fecharModal();
+    }
+});
 
 /* MODAL */
 
@@ -881,6 +977,28 @@ prod.style.display="none"
 lucide.createIcons()
 
 atualizarContador()
+
+// Atualiza ícones do modal de imagem quando ele for aberto
+// Cria um observer para atualizar ícones quando o modal for exibido
+const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'class') {
+            const modal = document.getElementById('modalImagem');
+            if (modal.classList.contains('active')) {
+                lucide.createIcons();
+            }
+        }
+    });
+});
+
+observer.observe(document.getElementById('modalImagem'), { attributes: true });
+
+// Também atualiza ícones periodicamente para garantir
+setInterval(() => {
+    if (document.getElementById('modalImagem').classList.contains('active')) {
+        lucide.createIcons();
+    }
+}, 100);
 
 </script>
 
