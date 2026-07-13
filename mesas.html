@@ -18,7 +18,17 @@
 html{
 scroll-behavior:smooth;
 }
+@media (max-width:1023px){
 
+    #sidebarFiltros{
+        width: calc(100% - 2rem);
+        margin: 0 1rem 1.5rem;
+        border-radius:24px;
+        position:static;
+        height:auto;
+    }
+
+}
 body{
 font-family:'Josefin Sans',sans-serif;
 background:#f3f3f3;
@@ -199,7 +209,9 @@ class="absolute -top-1 -right-1 bg-white text-black text-xs w-5 h-5 rounded-full
 
     <i data-lucide="sliders-horizontal" class="w-5 h-5"></i>
 </button>
-<aside class="w-full lg:w-72 bg-black text-white p-8 lg:rounded-r-[40px] shadow-2xl lg:sticky lg:top-0 lg:h-screen overflow-y-auto">
+<aside class="<aside
+id="sidebarFiltros"
+class="hidden lg:block w-full lg:w-72 bg-black text-white p-8 lg:rounded-r-[40px] shadow-2xl lg:sticky lg:top-0 lg:h-screen overflow-y-auto">">
 
 <p class="tracking-[0.3em] text-gray-500 text-sm mb-4">
 CASALETI
@@ -992,6 +1004,15 @@ lucide.createIcons()
 
 atualizarContador()
 
+function toggleFiltros() {
+    const sidebar = document.getElementById("sidebarFiltros");
+
+    sidebar.classList.toggle("hidden");
+
+    if (!sidebar.classList.contains("hidden")) {
+        sidebar.classList.add("block");
+    }
+}
 </script>
 
 </body>
