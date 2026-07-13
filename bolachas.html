@@ -14,7 +14,36 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
+.filtro {
+    appearance: none;
+    -webkit-appearance: none;
 
+    width: 22px;
+    height: 22px;
+
+    border: 2px solid #fff;
+    border-radius: 6px;
+
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.filtro:checked {
+    background: white;
+}
+
+.filtro:checked::after {
+    content: "✓";
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+}
 body{
 font-family:'Josefin Sans', sans-serif;
 background:#efefef;
