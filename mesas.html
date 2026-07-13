@@ -14,7 +14,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+.filtro {
+    appearance: none;
+    -webkit-appearance: none;
 
+    width: 22px;
+    height: 22px;
+
+    border: 2px solid #fff;
+    border-radius: 6px;
+
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.filtro:checked {
+    background: white;
+}
+
+.filtro:checked::after {
+    content: "✓";
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+}
 html{
 scroll-behavior:smooth;
 }
