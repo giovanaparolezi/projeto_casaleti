@@ -26,7 +26,6 @@ scroll-behavior:smooth;
 }
 
 /* scrollbar */
-
 ::-webkit-scrollbar{
 width:8px;
 }
@@ -34,6 +33,67 @@ width:8px;
 ::-webkit-scrollbar-thumb{
 background:#111;
 border-radius:999px;
+}
+
+/* MODAL DE IMAGEM EM TELA CHEIA */
+.modal-imagem {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.modal-imagem.active {
+    display: flex;
+}
+
+.modal-imagem img {
+    max-width: 92%;
+    max-height: 92%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.fechar-imagem {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.fechar-imagem:hover {
+    transform: scale(1.1);
+    background: #f0f0f0;
+}
+
+.fechar-imagem i {
+    width: 28px;
+    height: 28px;
+    color: black;
+}
+
+/* Estilo para as imagens dos produtos - cursor pointer */
+.produto img {
+    cursor: pointer;
 }
 
 /* RESPONSIVO: 2 produtos por linha no mobile */
@@ -50,6 +110,7 @@ border-radius:999px;
     
     .grid-produtos .produto img {
         height: 180px !important;
+        object-fit: cover !important;
     }
     
     .grid-produtos .produto .p-6 {
@@ -93,8 +154,15 @@ border-radius:999px;
 
 <body>
 
-<!-- CARRINHO -->
+<!-- MODAL DE IMAGEM EM TELA CHEIA -->
+<div id="modalImagem" class="modal-imagem" onclick="fecharImagemModal()">
+    <button class="fechar-imagem" onclick="event.stopPropagation(); fecharImagemModal()">
+        <i data-lucide="x"></i>
+    </button>
+    <img id="imagemFullscreen" src="" alt="Imagem ampliada">
+</div>
 
+<!-- CARRINHO -->
 <div onclick="abrirCarrinho()"
 class="fixed top-5 right-5 z-50 cursor-pointer">
 
@@ -116,7 +184,6 @@ class="absolute -top-1 -right-1 bg-white text-black text-xs w-5 h-5 rounded-full
 <div class="flex flex-col lg:flex-row min-h-screen">
 
 <!-- SIDEBAR -->
-
 <aside class="w-full lg:w-72 bg-black text-white p-8 lg:rounded-r-[40px] shadow-2xl lg:sticky lg:top-0 lg:h-screen overflow-y-auto">
 
 <p class="tracking-[0.3em] text-gray-500 text-sm mb-4">
@@ -130,7 +197,6 @@ Filtrar produtos
 </h2>
 
 <!-- FILTROS -->
-
 <div class="space-y-8">
 
 <div>
@@ -168,20 +234,20 @@ Artesanato
 <div>
 
 <h3 class="text-gray-400 mb-4 text-sm tracking-widest">
-PREÇO MÁXIMO
+PEÇAS A PARTIR DE R$50,00
 </h3>
 
 <input type="range"
-min="100"
-max="1500"
-value="1500"
+min="50"
+max="2000"
+value="2000"
 id="filtroPreco"
 class="w-full accent-white">
 
 <p id="valorPreco"
 class="mt-3 text-gray-300">
 
-Até R$1500
+Até R$2000,00
 
 </p>
 
@@ -192,7 +258,6 @@ Até R$1500
 </aside>
 
 <!-- CONTEÚDO -->
-
 <main class="flex-1 p-6 md:p-10">
 
 <a href="index.html"
@@ -228,8 +293,7 @@ class="grid grid-cols-1 xl:grid-cols-3 gap-8 grid-produtos">
 
 </div>
 
-<!-- MODAL -->
-
+<!-- MODAL PRODUTO -->
 <div id="modal"
 class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4 backdrop-blur-sm">
 
@@ -285,13 +349,11 @@ Adicionar ao carrinho
 </div>
 
 <!-- OVERLAY -->
-
 <div id="overlayCarrinho"
 class="fixed inset-0 bg-black/50 hidden z-40 backdrop-blur-sm"
 onclick="fecharCarrinho()"></div>
 
 <!-- DRAWER -->
-
 <div id="carrinhoDrawer"
 class="fixed top-0 right-0 w-full sm:w-[380px] h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 flex flex-col">
 
@@ -331,26 +393,23 @@ Finalizar no WhatsApp
 </div>
 
 </div>
-<a
-href="https://wa.me/5516999924544?text=Olá!%20Gostaria%20de%20mais%20informações."
+
+<a href="https://wa.me/5516999924544?text=Olá!%20Gostaria%20de%20mais%20informações."
 target="_blank"
 class="fixed bottom-6 right-6 z-50 hover:scale-110 transition">
 
-<img
-src="whats.png"
-alt="WhatsApp"
-class="w-16 h-16">
+<img src="whats.png" alt="WhatsApp" class="w-16 h-16">
 
 </a>
+
 <script>
 
 /* PRODUTOS */
-
-const produtosLista=[
+const produtosLista = [
 {
 nome:"Mesa de Centro com Bolacha de Madeira",
 preco:"R$250,00",
-valor:"250",
+valor:250,
 tipo:"decorativa",
 img:"bolacha/bolachas.png",
 dim:"*Consultar dimensões",
@@ -359,7 +418,7 @@ desc:"Podem ser usadas sozinhas como mesa de centro/lateral ou combinadas em alt
 {
 nome:"Bolachas de Madeira",
 preco:"R$250,00",
-valor:"250",
+valor:250,
 tipo:"decorativa",
 img:"bolacha/BOLACHAS22.png",
 dim:"*Consultar dimensões",
@@ -368,70 +427,66 @@ desc:"Bolachas de madeira natural em diferentes tamanhos e formatos. Ideais para
 {
 nome:"Bolachas de Madeira Grande",
 preco:"R$250,00",
-valor:"250",
+valor:250,
 tipo:"decorativa",
 img:"bolacha/bolachasmaiores.png",
 dim:"*Consultar dimensões",
 desc:"Peças de madeira maciça em grandes dimensões, com formato orgânico e acabamento natural. Perfeitas para tampos de mesa, decoração rústica, painéis decorativos e projetos exclusivos de marcenaria artesanal. Cada peça é única, valorizando os desenhos e veios naturais da madeira."
 },
-
-
 {
 nome:"Pranchas de Madeira",
 preco:"R$250,00",
-valor:"250",
+valor:250,
 tipo:"artesanato",
 img:"bolacha/pranchas.png",
 dim:"*Consultar dimensões",
 desc:"Perfeitas para a confecção de prateleiras suspensas, tampos de mesas de centro ou aparadores, cabeceiras, placas decorativas, relógios de parede rústicos, tábuas de corte gourmet ou trabalhos artísticos com resina epóxi"
 },
-
+{
+nome:"Pranchas de Madeira",
+preco:"A partir de R$350,00",
+valor:350,
+tipo:"artesanato",
+img:"bolacha/pranchas2.png",
+dim:"De 0,30m à 0,60m de largura ; A partir 1.50m de comprimento; A partir de 0,06cm de espessura",
+desc:"Perfeitas para a confecção de prateleiras suspensas, tampos de mesas de centro ou aparadores, cabeceiras, placas decorativas, relógios de parede rústicos, tábuas de corte gourmet ou trabalhos artísticos com resina epóxi"
+},
 {
 nome:"Pés de Madeira para Mesas de Centro",
 preco:"R$250,00",
-valor:"250",
+valor:250,
 tipo:"artesanato",
 img:"bolacha/pes.png",
 dim:"*Consultar dimensões",
 desc:"Pés de madeira torneados, ideais para fabricação e restauração de mesas e móveis artesanais. Produzidos em madeira natural, oferecem resistência, beleza e acabamento rústico para diversos projetos."
 },
-
-
-
 {
 nome:"Suporte para vaso de flor",
 preco:"R$250,00",
-valor:"250",
+valor:250,
 tipo:"decorativa",
 img:"bolacha/suporte.png",
 dim:"*Consultar dimensões",
 desc:"Suporte elegante com estrutura metálica e tampo em madeira natural. Perfeito para destacar vasos, flores e objetos decorativos em qualquer ambiente."
 },
-
-
 {
 nome:"Mesa de Centro",
 preco:"R$280,00",
-valor:"280",
+valor:280,
 tipo:"decorativa",
 img:"bolacha/bolachapecolorido.png",
 dim:"de 20cm à 80cm",
 desc:"Mesa artesanal produzida com bolacha de madeira natural e pés de ferro, unindo o charme rústico da madeira à alegria das cores. Ideal para decoração de salas, varandas, áreas gourmet, jardins e espaços infantis. Cada peça possui características únicas da madeira, tornando-a exclusiva e cheia de personalidade."
 },
-
-
 {
 nome:"Mesa Rústica com Pés Coloridos",
 preco:"R$280,00",
-valor:"280",
+valor:280,
 tipo:"decorativa",
 img:"bolacha/mesacolor.png",
 dim:"de 20cm à 80cm",
-desc:"Mesa artesanal produzida com bolacha de madeira natural e pés coloridos, unindo o charme rústico da madeira à alegria das cores. Ideal para decoração de salas, varandas, áreas gourmet, jardins e espaços infantis. Cada peça possui características únicas da madeira, tornando-a exclusiva e cheia de personalidade.."
+desc:"Mesa artesanal produzida com bolacha de madeira natural e pés coloridos, unindo o charme rústico da madeira à alegria das cores. Ideal para decoração de salas, varandas, áreas gourmet, jardins e espaços infantis. Cada peça possui características únicas da madeira, tornando-a exclusiva e cheia de personalidade."
 },
-
-
-
 {
 nome:"Bandeja Galvanizada Multiuso",
 preco:"R$70,00",
@@ -441,7 +496,6 @@ img:"bolacha/galvanizada.png",
 dim:"80cm x 54cm",
 desc:"Produzida em chapa galvanizada de alta durabilidade. Indicada para apoio de vasos, organização de mudas e diversas aplicações em floriculturas, jardins e viveiros."
 },
-
 {
 nome:"Balde Quadrado para Cultivo",
 preco:"R$60,00",
@@ -451,7 +505,6 @@ img:"bolacha/suportevaso.png",
 dim:"*20L",
 desc:"Balde plástico resistente, ideal para o desenvolvimento saudável de mudas, flores e pequenas plantas. Possui aberturas para melhor drenagem e ventilação das raízes. Capacidade: 20L."
 },
-
 {
 nome:"Porta Vaso para 12 mudas",
 preco:"R$25,00",
@@ -461,7 +514,6 @@ img:"bolacha/portavaso.png",
 dim:"*Consultar dimensões",
 desc:"Ideal para organização e transporte de mudas. Possui capacidade para 12 vasinhos, oferecendo praticidade para viveiros, floriculturas e produtores. Fabricado em material resistente e reutilizável."
 },
-
 {
 nome:"Roda Carroça",
 preco:"R$950,00",
@@ -471,350 +523,202 @@ img:"bolacha/roda.jpg",
 dim:"*Consultar dimensões",
 desc:"Peça original em madeira maciça, utilizada tradicionalmente em carroças ou carros de boi."
 }
-
 ]
 
+/* FUNÇÃO PARA ABRIR IMAGEM EM TELA CHEIA */
+function abrirImagemFullscreen(urlImagem) {
+    const modalImagem = document.getElementById('modalImagem');
+    const imagemFull = document.getElementById('imagemFullscreen');
+    
+    if (urlImagem && urlImagem !== '') {
+        imagemFull.src = urlImagem;
+        modalImagem.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            lucide.createIcons();
+        }, 50);
+    }
+}
+
+/* FUNÇÃO PARA FECHAR MODAL DE IMAGEM */
+function fecharImagemModal() {
+    const modalImagem = document.getElementById('modalImagem');
+    modalImagem.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+/* Fechar modal de imagem com tecla ESC */
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        fecharImagemModal();
+        fecharModal();
+    }
+});
+
 /* GERAR PRODUTOS */
-
 function renderProdutos(lista){
-
-const container=document.getElementById("produtos")
-
-container.innerHTML=""
-
-lista.forEach((prod,index)=>{
-
-container.innerHTML+=`
-
-<div class="produto bg-white rounded-[30px] overflow-hidden shadow-lg hover:-translate-y-2 transition duration-500"
-data-tipo="${prod.tipo}"
-data-preco="${prod.valor}">
-
-<div class="overflow-hidden">
-
-<img src="${prod.img}"
-class="w-full h-[320px] object-cover hover:scale-110 transition duration-700">
-
-</div>
-
-<div class="p-6">
-
-<h3 class="text-xl mb-2">
-${prod.nome}
-</h3>
-
-<p class="text-gray-400 mb-6">
-${prod.preco}
-</p>
-
-<button onclick="abrirProduto(produtosLista[${index}])"
-class="bg-black text-white w-full py-4 rounded-2xl hover:bg-neutral-800 transition">
-
-Consultar
-
-</button>
-
-</div>
-
-</div>
-
-`
-
-})
-
+    const container=document.getElementById("produtos")
+    container.innerHTML=""
+    lista.forEach((prod,index)=>{
+        container.innerHTML+=`
+            <div class="produto bg-white rounded-[30px] overflow-hidden shadow-lg hover:-translate-y-2 transition duration-500"
+            data-tipo="${prod.tipo}"
+            data-preco="${prod.valor}">
+                <div class="overflow-hidden">
+                    <img src="${prod.img}"
+                    class="w-full h-[320px] object-cover hover:scale-110 transition duration-700"
+                    onclick="abrirImagemFullscreen('${prod.img}')">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl mb-2">${prod.nome}</h3>
+                    <p class="text-gray-400 mb-6">${prod.preco}</p>
+                    <button onclick="abrirProduto(produtosLista[${index}])"
+                    class="bg-black text-white w-full py-4 rounded-2xl hover:bg-neutral-800 transition">
+                    Consultar
+                    </button>
+                </div>
+            </div>
+        `
+    })
 }
 
-/* MODAL */
+let produtoAtual = null
 
+/* MODAL PRODUTO */
 function abrirProduto(prod){
-
-produtoAtual=prod
-
-document.getElementById("modalTitulo").innerText=prod.nome
-
-document.getElementById("modalPreco").innerText=prod.preco
-
-document.getElementById("modalDim").innerText=`Dimensão: ${prod.dim}`
-
-document.getElementById("modalDesc").innerText=prod.desc
-
-document.getElementById("btnWhats").onclick=function(){
-
-window.open(
-`https://wa.me/5516999924544?text=Olá! Tenho interesse no produto: ${prod.nome}`
-)
-
+    produtoAtual=prod
+    document.getElementById("modalTitulo").innerText=prod.nome
+    document.getElementById("modalPreco").innerText=prod.preco
+    document.getElementById("modalDim").innerText=`Dimensão: ${prod.dim}`
+    document.getElementById("modalDesc").innerText=prod.desc
+    document.getElementById("btnWhats").onclick=function(){
+        window.open(`https://wa.me/5516999924544?text=Olá! Tenho interesse no produto: ${prod.nome}`)
+    }
+    document.getElementById("modal").classList.remove("hidden")
+    document.getElementById("modal").classList.add("flex")
 }
 
-document
-.getElementById("modal")
-.classList.remove("hidden")
-
-document
-.getElementById("modal")
-.classList.add("flex")
-
-}
-
-/* FECHAR MODAL */
-
+/* FECHAR MODAL PRODUTO */
 function fecharModal(){
-
-document
-.getElementById("modal")
-.classList.add("hidden")
-
-document
-.getElementById("modal")
-.classList.remove("flex")
-
+    document.getElementById("modal").classList.add("hidden")
+    document.getElementById("modal").classList.remove("flex")
 }
 
 /* STORAGE */
-
 function getCarrinho(){
-
-return JSON.parse(localStorage.getItem("carrinho")) || []
-
+    return JSON.parse(localStorage.getItem("carrinho")) || []
 }
 
 function salvarCarrinho(carrinho){
-
-localStorage.setItem(
-"carrinho",
-JSON.stringify(carrinho)
-)
-
-atualizarContador()
-
-mostrarCarrinho()
-
+    localStorage.setItem("carrinho", JSON.stringify(carrinho))
+    atualizarContador()
+    mostrarCarrinho()
 }
 
 /* ADD CARRINHO */
-
 function addCarrinho(){
-
-if(!produtoAtual) return
-
-let carrinho=getCarrinho()
-
-carrinho.push({
-
-nome:produtoAtual.nome,
-
-preco:produtoAtual.valor,
-
-img:produtoAtual.img
-
-})
-
-salvarCarrinho(carrinho)
-
-fecharModal()
-
+    if(!produtoAtual) return
+    let carrinho=getCarrinho()
+    carrinho.push({
+        nome:produtoAtual.nome,
+        preco:produtoAtual.valor,
+        img:produtoAtual.img
+    })
+    salvarCarrinho(carrinho)
+    fecharModal()
 }
 
 /* DRAWER */
-
 function abrirCarrinho(){
-
-document
-.getElementById("overlayCarrinho")
-.classList.remove("hidden")
-
-document
-.getElementById("carrinhoDrawer")
-.style.transform="translateX(0)"
-
-mostrarCarrinho()
-
+    document.getElementById("overlayCarrinho").classList.remove("hidden")
+    document.getElementById("carrinhoDrawer").style.transform="translateX(0)"
+    mostrarCarrinho()
 }
 
 function fecharCarrinho(){
-
-document
-.getElementById("overlayCarrinho")
-.classList.add("hidden")
-
-document
-.getElementById("carrinhoDrawer")
-.style.transform="translateX(100%)"
-
+    document.getElementById("overlayCarrinho").classList.add("hidden")
+    document.getElementById("carrinhoDrawer").style.transform="translateX(100%)"
 }
 
 function mostrarCarrinho(){
-
-let lista=document.getElementById("listaCarrinho")
-
-let carrinho=getCarrinho()
-
-lista.innerHTML=""
-
-let total=0
-
-if(carrinho.length===0){
-
-lista.innerHTML=`
-
-<div class="text-center text-gray-400 mt-10">
-
-Seu carrinho está vazio
-
-</div>
-
-`
-
-document.getElementById("totalCarrinho").innerText =
-"Total: R$ 0,00"
-
-return
-
-}
-
-carrinho.forEach((prod,i)=>{
-
-total += Number(prod.preco)
-
-lista.innerHTML+=`
-
-<div class="border border-black/10 rounded-2xl p-4 flex gap-4 items-center">
-
-<img src="${prod.img}"
-class="w-16 h-16 rounded-xl object-cover">
-
-<div class="flex-1">
-
-<p class="text-sm">
-${prod.nome}
-</p>
-
-<p class="font-semibold">
-R$ ${Number(prod.preco).toFixed(2).replace(".",",")}
-</p>
-
-</div>
-
-<button onclick="removerItem(${i})"
-class="text-red-500 text-lg">
-
-✕
-
-</button>
-
-</div>
-
-`
-
-})
-
-document.getElementById("totalCarrinho").innerText =
-`Total: R$ ${total.toFixed(2).replace(".", ",")}`
-
+    let lista=document.getElementById("listaCarrinho")
+    let carrinho=getCarrinho()
+    lista.innerHTML=""
+    let total=0
+    if(carrinho.length===0){
+        lista.innerHTML=`<div class="text-center text-gray-400 mt-10">Seu carrinho está vazio</div>`
+        document.getElementById("totalCarrinho").innerText = "Total: R$ 0,00"
+        return
+    }
+    carrinho.forEach((prod,i)=>{
+        total += Number(prod.preco)
+        lista.innerHTML+=`
+            <div class="border border-black/10 rounded-2xl p-4 flex gap-4 items-center">
+                <img src="${prod.img}" class="w-16 h-16 rounded-xl object-cover">
+                <div class="flex-1">
+                    <p class="text-sm">${prod.nome}</p>
+                    <p class="font-semibold">R$ ${Number(prod.preco).toFixed(2).replace(".",",")}</p>
+                </div>
+                <button onclick="removerItem(${i})" class="text-red-500 text-lg">✕</button>
+            </div>
+        `
+    })
+    document.getElementById("totalCarrinho").innerText = `Total: R$ ${total.toFixed(2).replace(".", ",")}`
 }
 
 /* REMOVER */
-
 function removerItem(i){
-
-let carrinho=getCarrinho()
-
-carrinho.splice(i,1)
-
-salvarCarrinho(carrinho)
-
+    let carrinho=getCarrinho()
+    carrinho.splice(i,1)
+    salvarCarrinho(carrinho)
 }
 
 /* CONTADOR */
-
 function atualizarContador(){
-
-document
-.getElementById("contadorCarrinho")
-.innerText=getCarrinho().length
-
+    document.getElementById("contadorCarrinho").innerText=getCarrinho().length
 }
 
 /* WHATS */
-
 function finalizarWhats(){
-
-let carrinho=getCarrinho()
-
-if(carrinho.length===0){
-
-alert("Seu carrinho está vazio!")
-
-return
-
+    let carrinho=getCarrinho()
+    if(carrinho.length===0){
+        alert("Seu carrinho está vazio!")
+        return
+    }
+    let texto="Olá! Tenho interesse nestes produtos:%0A%0A"
+    carrinho.forEach(p=>{
+        texto+=`- ${p.nome} (R$${Number(p.preco).toFixed(2)})%0A`
+    })
+    window.open(`https://wa.me/5516999924544?text=${texto}`)
 }
-
-let texto="Olá! Tenho interesse nestes produtos:%0A%0A"
-
-carrinho.forEach(p=>{
-
-texto+=`- ${p.nome} (R$${Number(p.preco).toFixed(2)})%0A`
-
-})
-
-window.open(
-`https://wa.me/5516999924544?text=${texto}`
-)
-
-}
-
 
 /* FILTROS */
-
 const filtros=document.querySelectorAll(".filtro")
-
 const filtroPreco=document.getElementById("filtroPreco")
 
 function aplicarFiltros(){
-
-const tiposSelecionados=[...filtros]
-.filter(f=>f.checked)
-.map(f=>f.value)
-
-const precoMax=parseInt(filtroPreco.value)
-
-document.getElementById("valorPreco")
-.innerText=`Até R$${precoMax}`
-
-document.querySelectorAll(".produto")
-.forEach(prod=>{
-
-const tipo=prod.dataset.tipo
-const preco=parseInt(prod.dataset.preco)
-
-const tipoOk=
-tiposSelecionados.length===0 ||
-tiposSelecionados.includes(tipo)
-
-const precoOk=preco<=precoMax
-
-prod.style.display=(tipoOk && precoOk)
-? "block"
-: "none"
-
-})
-
+    const tiposSelecionados=[...filtros].filter(f=>f.checked).map(f=>f.value)
+    const precoMax=parseInt(filtroPreco.value)
+    document.getElementById("valorPreco").innerText=`Até R$${precoMax}`
+    document.querySelectorAll(".produto").forEach(prod=>{
+        const tipo=prod.dataset.tipo
+        const preco=parseInt(prod.dataset.preco)
+        const tipoOk=tiposSelecionados.length===0 || tiposSelecionados.includes(tipo)
+        const precoOk=preco<=precoMax
+        prod.style.display=(tipoOk && precoOk) ? "block" : "none"
+    })
 }
 
 filtros.forEach(f=>{
-
-f.addEventListener("change",aplicarFiltros)
-
+    f.addEventListener("change",aplicarFiltros)
 })
 
 filtroPreco.addEventListener("input",aplicarFiltros)
 
 /* INIT */
-
 renderProdutos(produtosLista)
-
 lucide.createIcons()
-
 atualizarContador()
 
 </script>
